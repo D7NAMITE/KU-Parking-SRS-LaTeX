@@ -1,3 +1,6 @@
+# Acknowledgement
+This Software Requirements Specification (SRS) document is adapted from [Pawitchaya C. (GToidZ) - KU-SKE-SRS-LaTeX](https://github.com/Secret-Order/KU-SKE-SRS-LaTeX?tab=readme-ov-file). I sincerely appreciate his contribution, which has greatly streamlined the report formatting process and enhanced the documentation.
+
 # Software Requirements Specifications Documentation in LaTeX
 Made for Software and Knowledge Engineering students who enrolled in Project Preparation course. The document is written in LaTeX and requires at least LaTeX2e to parse the template. The template should be reflecting this [document](https://drive.google.com/file/d/1jN1bwZbOawE3YX4K3zLIamliZ07KrzSQ/view?usp=drive_link), if not please open an issue.
 
