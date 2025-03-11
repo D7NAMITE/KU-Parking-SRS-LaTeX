@@ -25,17 +25,7 @@ The implementation of a parking indicator system can be costly and impractical, 
 \section{Solution Overview}
 \label{section:solution-overview}
 
-KU-Parking is a mobile application that leverages existing surveillance cameras to detect and display available parking spots in real-time.
-The system processes camera feeds through cloud-based computer vision that identifies parking spaces, detects vehicles using YOLO, and determines occupancy through IoU calculations.
-Users can view current parking availability and navigate directly to vacant spots, eliminating wasted search time without requiring new infrastructure installation.
-
-% A software solution overview provides a high-level and
-% concise description of a software product or system. It serves as an
-% introduction to the software, offering a glimpse into its key features,
-% functionalities, and the problems it aims to address. This overview is often
-% presented in documentation, marketing materials, or other communication
-% channels to give stakeholders, potential users, or decision-makers a quick
-% understanding of what the software does and why it is valuable.
+KU-Parking is a system consisting of two main components: the parking detection system and the mobile application. The parking detection system uses existing surveillance cameras to monitor parking spaces and processes the camera feeds through cloud-based computer vision. It integrates YOLO for vehicle detection and uses Intersection over Union (IoU) calculations to determine occupancy. The mobile application provides users with parking availability information, guiding them directly to vacant spots, without the need for additional infrastructure installation.
 
 \subsection{Features}
 \label{subsection:features}
