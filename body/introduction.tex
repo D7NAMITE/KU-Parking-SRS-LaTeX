@@ -33,11 +33,13 @@ KU-Parking is a system consisting of two main components: the parking detection 
 \begin{enumerate}[leftmargin=80pt]
     % TODO: to be update just a place holder
     \item Real-time Occupancy Detection: Identifies vacant and occupied parking spots using computer vision and IoU analysis.
-    \item Cloud-based Processing: Analyzes camera feeds remotely without requiring on-site hardware installation.
-    \item Mobile Navigation: A smartphone application that guides users directly to available parking lots. It integrates with third-party mapping services like Google Maps, providing real-time directions and location information.
-    \item Existing Infrastructure Integration: Utilizes already-installed surveillance cameras instead of new sensors.
-    \item Parking Availability Dashboard: Displays the number and location of available spots in each parking area.
-    \end{enumerate}
+    
+    \item Cloud-based Image Processing: Analyzes camera feeds through remote servers, enabling efficient vehicle detection without requiring powerful on-site hardware.
+    
+    \item Mobile Parking Area Map: Displays parking lot locations across campus with real-time availability information. Integrates with third-party mapping services like Google Maps for turn-by-turn navigation to available parking areas.
+    
+    \item No Additional Installation Required: Utilizes existing surveillance cameras already installed throughout campus, eliminating the need for additional sensors or hardware.
+\end{enumerate}
 
 \section{Target User}
 \label{section:target-user}
@@ -45,9 +47,10 @@ KU-Parking is a system consisting of two main components: the parking detection 
 Our primary target users are drivers navigating to the Kasetsart University campus, particularly those unfamiliar with the campus parking facilities. Specifically:
 \begin{enumerate}[leftmargin=80pt]
 \item Students: New or visiting students who are unfamiliar with parking availability patterns across campus and need efficient navigation to classes.
-\item Campus Visitors: Guest lecturers, parents, or other visitors who have limited knowledge of campus layout and parking options.
-\item Occasional Campus Users: Alumni, part-time students, or attendees of campus events who visit infrequently and need guidance to available parking.
+\item Visitors and Occasional Users: Guest lecturers, parents, alumni, event attendees, and other infrequent campus visitors who have limited knowledge of campus layout and require guidance to available parking options.
 \end{enumerate}
+
+
 \section{Benefit}
 \label{section:benefit}
 
