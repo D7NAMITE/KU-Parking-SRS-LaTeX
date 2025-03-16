@@ -5,41 +5,27 @@
 \label{section:background}
 
 In large campuses or complexes with multiple departments or offices within the same area, parking often becomes a common inconvenience for commuters.
-Many individuals waste time driving to a parking lot close to their destination, only to find their preferred lot full, forcing them to drive elsewhere.
-This not only leads to frustration but also results in unnecessary fuel consumption and traffic congestion.
+Many individuals waste time driving to a parking lot close to their destination, only to find their preferred lot full, forcing them to look for parking elsewhere. This can potentially add unnecessary stress to individual days.
 
 
-Studies indicate that cruising for parking can contribute to between 8 and 74 percent of overall traffic congestion and may take anywhere from 3.5 to 14 minutes to secure a spot \cite{shoup:2006}.
-This issue is even more frustrating for non-resident visitors unfamiliar with the area, such as those navigating Kasetsart University, where finding available parking can be particularly challenging without prior knowledge of the area layout.
-The complexity is further compounded by the road system, which consists of multiple one-way streets, making it difficult for drivers to efficiently navigate between parking areas and forcing them into longer detours when the preferred parking is not available.
+Kasetsart University's Bangkhen Campus spans 1,356,800 square meters and houses 18 faculties, 3 colleges, 3 institutes, 6 divisions/offices, and 6 centers/institutes\cite{ku_campus_info}. With constant traffic of students, employees, visitors, and the general public, the campus experiences persistent parking challenges due to scattered parking lots and limited parking availability. This issue is even more frustrating for non-resident visitors unfamiliar with the area, such as those navigating Kasetsart University, where finding available parking can be particularly challenging without prior knowledge of the area layout. The complexity is further compounded by the road system, which consists of multiple one-way streets, making it difficult for drivers to efficiently navigate between parking areas and forcing them into longer detours when the preferred parking is not available.
 
 
 Many parking facilities address this challenge by installing parking indicators that display the number of available spots or highlight specific vacant spaces.
-These systems help users determine parking availability before entering the lot, reducing unnecessary driving time and congestion.
-However, they typically rely on sensors installed in individual parking spots to detect occupancy.
+These systems help users determine parking availability before entering the lot, reducing unnecessary driving time and congestion. However, they typically rely on sensors installed in individual parking spots to detect occupancy.
 While effective, such sensor-based systems require significant installation and maintenance costs.
-As a result, many authorities choose not to implement these systems due to budget constraints, leaving drivers to search for parking without any indicator.
+As a result, many parking owners choose not to implement these systems due to budget constraints, leaving drivers to search for parking without any indicator.
 
 \section{Problem Statement}
 \label{section:problem-statement}
-The problem addressed by KU Parking is that commuters on campus struggle to find available parking without having to cruise around. Due to limited information about parking availability and, in some cases, unfamiliarity with the area, drivers often waste significant time and fuel, leading to frustration and contributing to traffic congestion. 
+The problem addressed by KU Parking is that commuters on campus struggle to find available parking without having to drive around. Due to limited information about parking availability and, in some cases, unfamiliarity with the area, drivers often waste significant time, leading to individual frustration. 
 
-The establishment of a parking indicator system can be costly and impractical, as the installation and financial constraints may not suit campuses or complexes with multiple parking lots spread across the area. Additionally, existing image-based systems are typically implemented on single parking lots, lacking integration between multiple parking areas. Furthermore, there is no accessible platform, such as a mobile app, for drivers to easily gain real-time information about parking availability across the entire.
+The implementation of a parking indicator system can be costly and impractical, as the installation and financial constraints may not suit campuses or complexes with multiple parking lots spread across the area. Additionally, existing image-based systems are typically implemented on single parking lots, lacking integration between multiple parking areas. Furthermore, there is no accessible platform, such as a mobile app, for drivers to easily gain real-time information about parking availability across the entire.
 
 \section{Solution Overview}
 \label{section:solution-overview}
 
-KU-Parking is a mobile application that leverages existing surveillance cameras to detect and display available parking spots in real-time.
-The system processes camera feeds through cloud-based computer vision that identifies parking spaces, detects vehicles using YOLO, and determines occupancy through IoU calculations.
-Users can view current parking availability and navigate directly to vacant spots, eliminating wasted search time without requiring new infrastructure installation.
-
-% A software solution overview provides a high-level and
-% concise description of a software product or system. It serves as an
-% introduction to the software, offering a glimpse into its key features,
-% functionalities, and the problems it aims to address. This overview is often
-% presented in documentation, marketing materials, or other communication
-% channels to give stakeholders, potential users, or decision-makers a quick
-% understanding of what the software does and why it is valuable.
+KU-Parking is a system consisting of two main components: the parking detection system and the mobile application. The parking detection system uses existing surveillance cameras or portable camera modules to monitor parking spaces and processes the camera feeds through cloud-based computer vision. It integrates YOLO for vehicle detection and uses Intersection over Union (IoU) calculations to determine occupancy. The mobile application provides users with parking availability information, guiding them directly to vacant spots, without the need for additional infrastructure installation.
 
 \subsection{Features}
 \label{subsection:features}
@@ -47,11 +33,13 @@ Users can view current parking availability and navigate directly to vacant spot
 \begin{enumerate}[leftmargin=80pt]
     % TODO: to be update just a place holder
     \item Real-time Occupancy Detection: Identifies vacant and occupied parking spots using computer vision and IoU analysis.
-    \item Cloud-based Processing: Analyzes camera feeds remotely without requiring on-site hardware installation.
-    \item Mobile Navigation: A smartphone application that guides users directly to available parking lots. It integrates with third-party mapping services like Google Maps, providing real-time directions and location information.
-    \item Existing Infrastructure Integration: Utilizes already-installed surveillance cameras instead of new sensors.
-    \item Parking Availability Dashboard: Displays the number and location of available spots in each parking area.
-    \end{enumerate}
+    
+    \item Cloud-based Image Processing: Analyzes camera feeds through remote servers, enabling efficient vehicle detection without requiring powerful on-site hardware.
+    
+    \item Mobile Parking Area Map: Displays parking lot locations across campus with real-time availability information. Integrates with third-party mapping services like Google Maps for turn-by-turn navigation to available parking areas.
+    
+    \item No Additional Installation Required: Utilizes existing surveillance cameras already installed throughout campus, eliminating the need for additional sensors or hardware.
+\end{enumerate}
 
 \section{Target User}
 \label{section:target-user}
@@ -59,9 +47,10 @@ Users can view current parking availability and navigate directly to vacant spot
 Our primary target users are drivers navigating to the Kasetsart University campus, particularly those unfamiliar with the campus parking facilities. Specifically:
 \begin{enumerate}[leftmargin=80pt]
 \item Students: New or visiting students who are unfamiliar with parking availability patterns across campus and need efficient navigation to classes.
-\item Campus Visitors: Guest lecturers, parents, or other visitors who have limited knowledge of campus layout and parking options.
-\item Occasional Campus Users: Alumni, part-time students, or attendees of campus events who visit infrequently and need guidance to available parking.
+\item Visitors and Occasional Users: Guest lecturers, parents, alumni, event attendees, and other infrequent campus visitors who have limited knowledge of campus layout and require guidance to available parking options.
 \end{enumerate}
+
+
 \section{Benefit}
 \label{section:benefit}
 
@@ -79,24 +68,8 @@ The KU-Parking solution offers several significant advantages:
 \section{Terminology}
 \label{section:terminology}
 
-\begin{description}
-    \item[Parking Indicator System] A system that displays the number of available parking spots or highlights specific vacant spaces to help users determine parking availability before entering a parking lot.
-    
-    \item[IoU (Intersection over Union)] A metric used in computer vision to calculate the overlap between predicted and actual object boundaries, used in this system to determine parking space occupancy.
-    
+\begin{description} 
     \item[YOLO (You Only Look Once)] A computer vision algorithm used for real-time object detection, employed in this system to identify vehicles in parking spaces.
-    
-    \item[Cloud-based Processing] The method of analyzing data remotely on internet servers rather than on local hardware, allowing for scalability and reduced on-site equipment needs.
-    
-    \item[Occupancy Detection] The process of identifying whether a parking space is vacant or occupied using computer vision techniques.
-    
-    \item[Real-time Navigation] The feature that provides users with current directions to available parking spots as conditions change.
-    
-    \item[Existing Infrastructure Integration] The utilization of already-installed surveillance cameras for parking detection instead of installing new dedicated sensors.
-    
-    \item[Parking Availability Dashboard] A visual interface that displays the number and location of available spots in each parking area.
-    
-    \item[Cruising for Parking] The act of driving around searching for an available parking space, which contributes to traffic congestion and fuel consumption.
-    
-    \item[Mobile Application] A software program designed to run on mobile devices that provides users with parking availability information and navigation assistance.
+
+    \item[IoU (Intersection over Union)] A metric used in computer vision to calculate the overlap between predicted and actual object boundaries, used in this system to determine parking space occupancy.   
 \end{description}
