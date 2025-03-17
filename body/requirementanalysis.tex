@@ -1,3 +1,16 @@
+\newcounter{nuserstory}
+
+\newcommand{\userstory}[4]{%
+    \refstepcounter{nuserstory}
+    \subsection{#1}
+    \label{userstory:\thenuserstory}
+    \hangindent=40pt
+    \textbf{\textit{As a}} #2,\\
+    \textbf{\textit{I want to}} #3,\\
+    \textbf{\textit{so that}} #4.
+}
+
+
 \chapter{Requirement Analysis}
 \label{chap:requirement-analysis}
 
@@ -12,13 +25,40 @@ affected by the outcomes of your project.
 
 \section{User Stories}
 \label{section:user-stories}
-<TIP: Write user stories for each of your stakeholders here./>
 
-User stories are a technique used in agile software
-development to capture and describe functional requirements from an end
-user's perspective. They are a way of expressing software features or
-functionality in a simple, non-technical language that can be easily understood
-by both developers and stakeholders.
+% % user story
+% บอก availability of parking lot
+% นำทางไปที่ parking นั้นได้
+% อยากให้ใส่ destination and see close parking lots that are available or not available
+% % parking area owner story
+% อยากให้ติดตั้งง่าย
+% อยากให้ไม่ต้องใส่จำนวนที่จอดรถเองหรือน้อยที่่สุด
+% อยากให้ model ที่ออนไซส์ไม่ต้่องการใช้ computing performance มาก
+
+\userstory{Parking Availability Indicator% 
+}{driver on Kasetsart University campus% 
+}{see the parking availability indicator% 
+}{I don't waste time driving to all parking areas}
+
+\userstory{Navigation to Available Parking% 
+}{visiting driver looking for parking% 
+}{be guided directly to available parking areas% 
+}{I can efficiently reach parking without unnecessary detours}
+
+\userstory{Destination-based Parking Search% 
+}{campus visitor% 
+}{specify my destination and see nearby parking options with availability status% 
+}{I can choose the most convenient parking location for my needs}
+
+\userstory{Existing Infrastructure Utilization% 
+}{parking area owner% 
+}{implement a parking availability indicator system using existing infrastructure% 
+}{I can provide parking information to visitor without significant investment}
+
+\userstory{Lightweight On-Site Resources Requirements% 
+}{parking area administrator% 
+}{deploy a solution that doesn't require high computing performance on-site% 
+}{I can implement the system with existing resources and minimal operating costs}
 
 \section{Use Case Diagram}
 \label{section:use-case-diagram}
