@@ -1,24 +1,41 @@
 \chapter{Literature Review and Related Work}
 \label{chap:relatedworks}
 
-In this chapter, describe other solutions/research that address the
-same topic as your project. If you are working on a software project, create a
-list of alternative solutions and analyze them in the competitor analysis section.
-If you are working on a research project, describe your related work research in
-the literature review section.
-
 \section{Competitor Analysis}
 \label{section:competitor-analysis}
-
-\begin{figure}[h]
+\begin{table}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{examples/asana-competitive-landscape.jpg}
-    \caption{Competitive Landscape by Asana}
-\end{figure}
+    \resizebox{\textwidth}{!}{ 
+        \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
+            \hline
+            \textbf{} & \textbf{KU Parking} & \textbf{ParkMobile} & \textbf{SpotHero} & \textbf{Parking Guidance System} \\
+            \hline
+            \textbf{Target Audience} & Kasetsart University Visitors & General Public in North America & General Public in North America & General Public \\
+            \hline
+            \textbf{Target Parking Type} & University Parking & Public or Commercial Parking & Public orCommercial Parking & Commercial Parking \\
+            \hline
+            \textbf{Platform Availability} & Mobile App & Mobile App & Mobile App & Physical Display \\
+            \hline
+            \textbf{Data Collection Method} & Surveillance Cameras & Parking Meters & Parking Meters & Sensors \\
+            \hline
+            \textbf{Parking Area Navigation} & Available & Available & Available & Not Available \\
+            \hline
+            \textbf{Integration of Multiple Parking Lots} & Available & Available & Available & Not Available \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Competitor Analysis for KU Parking}
+    \label{tab:competitor-analysis}
+\end{table}
 
-Refer to an article "How to create a competitive analysis (with
-examples)" by Asana. You can use the Competitor Landscape (left image) or
-Competitor Analysis Framework (right image) for your project.
+There are several parking availability provider systems on the market, each offering unique features and technologies, as shown in Table 2.1. The following three systems represent the most significant competitors to KU Parking:
+
+\begin{itemize}
+    \item \textbf{\textit{ParkMobile}}---a mobile app that allows users to find, reserve, and pay for parking through their smartphones.
+    \item \textbf{\textit{SpotHero}}---a digital parking reservation service that allows drivers to locate and book parking spaces in garages and lots.
+    \item \textbf{\textit{Parking Guidance System}}---a system that uses digital displays and indicator lights to show parking availability, with vacant spots detected through sensors
+\end{itemize}
+KU Parking focuses on providing information about parking facilities on the university campus, helping unfamiliar visitors navigate to available parking areas. The system aims to collect data on available spaces using surveillance cameras and an image processing model, delivering the information to users via a mobile application.
 
 \section{Literature Review}
 \label{section:literature-review}
