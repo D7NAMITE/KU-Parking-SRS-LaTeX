@@ -30,6 +30,65 @@ or actions between them./>
 
 \section{Algorithm}
 \label{section:algorithm}
-<TIP: Optional, If you are working on a research project that proposes a new
-algorithm, you can describe your algorithm here. It can be in the form of
-pseudocode or any diagram that you deem appropriate./>
+\subsection{Intersection over Union (IoU) for Occupancy Detection}
+Intersection over Union (IoU) is a crucial metric in the KU Parking system used to determine whether a parking space is occupied. 
+The algorithm works by comparing the overlap between two areas: the predefined parking space boundary and the bounding box of any detected vehicle.
+
+The IoU calculation is mathematically defined as:
+
+\[
+\text{IoU} = \frac{\text{Area of Intersection}}{\text{Area of Union}}
+\]
+
+Where:
+\begin{itemize}
+    \item The intersection is the overlapping region between the parking space boundary and vehicle bounding box
+    \item The union is the total combined area of both the parking space boundary and vehicle bounding box
+\end{itemize}
+
+The IoU value ranges from 0 to 1, where:
+\begin{itemize}
+    \item IoU = 0 indicates no overlap (parking space is completely empty)
+    \item IoU = 1 indicates perfect overlap (parking space perfectly matches the vehicle dimensions)
+\end{itemize}
+
+Our algorithm for determining parking space occupancy follows this process:
+
+\begin{enumerate}
+    \item For each frame captured by the surveillance camera:
+    \begin{itemize}
+        \item Apply YOLO to detect vehicles and generate their bounding boxes
+        \item For each predefined parking space boundary:
+        \begin{itemize}
+            \item Calculate the IoU with each detected vehicle bounding box
+            \item If any IoU value exceeds a predefined threshold, classify the space as occupied
+            \item If no IoU value exceeds the threshold, classify the space as vacant
+        \end{itemize}
+    \end{itemize}
+    
+    % \item Apply temporal filtering to reduce false positives:
+    % \begin{itemize}
+    %     \item Track occupancy state over multiple consecutive frames
+    %     \item Only change occupancy status after consistent detection across several frames
+    %     \item This prevents flickering status changes due to temporary occlusions or detection errors
+    % \end{itemize}
+\end{enumerate}
+
+\section{AI Component}
+\label{section:ai-component}
+
+The AI component is a core element of KU Parking. 
+It enables parking availability detection by processing streaming video frames from existing surveillance cameras using computer vision techniques. 
+The key components include:
+
+\subsection{YOLO-based Vehicle Detection}
+YOLO (You Only Look Once) is a real-time object detection algorithm that processes entire images in a single evaluation pass.
+YOLO divides images into a grid and simultaneously predicts bounding boxes and class probabilities for detected objects. 
+The algorithm's speed and efficiency make it ideal for processing video feeds in near real-time.
+
+\subsection{Parking Space Boundary Detection}
+During the initial system setup, edge detection algorithms are used to assist in defining parking space boundaries from camera feeds. 
+These algorithms detect significant changes in pixel intensity that typically represent lines or boundaries of parking spaces. 
+By applying techniques the system can identify straight lines marking parking spaces, 
+which are then verified and finalized by system administrators. Once these boundaries are established during setup, 
+they remain fixed for ongoing operations, serving as reference coordinates for the IoU calculations to determine parking space occupancy.
