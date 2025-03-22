@@ -26,7 +26,7 @@
 
 %% -----------------------------------
 % Edit the variables for the paper here!
-\def \srsTitle{KU Parking}
+\def \srsTitle{KU Parking (Project Proposal)}
 \def \srsAuthorOne{Nanthawat Duang-ead}
 \def \srsAuthorTwo{Setthapon Thadisakun}
 \def \srsAuthorThree{}
@@ -50,19 +50,9 @@
     \setlength{\parindent}{40pt}
 
     \include{body/abstract}
-    \include{body/acknowledgement}
 
     \tableofcontents
 
-    \newpage
-    \listoftables
-    \label{chap:lot}
-    \addcontentsline{toc}{chapter}{\nameref{chap:lot}}
-
-    \newpage
-    \listoffigures
-    \label{chap:lof}
-    \addcontentsline{toc}{chapter}{\nameref{chap:lof}}
 
     \clearpage
     \pagenumbering{arabic}
@@ -72,16 +62,11 @@
     \include{body/relatedworks}
     \include{body/requirementanalysis}
     \include{body/softwarearchitecture}
-    \include{body/softwaredevelopment}
-    \include{body/deliverable}
-    \include{body/discussion}
     %% Chapters section
 
     \input{common/onetextpage.tex}
     \onetextpage{Reference}
     \bibliographystyle{IEEEtran}
     \bibliography{bibliography}  % change the inside to your bibliography file name
-
-    \include{body/appendices}
 
 \end{document}
