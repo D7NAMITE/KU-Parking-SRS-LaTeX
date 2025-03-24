@@ -10,7 +10,7 @@ The key components include:
 \subsection{YOLO-based Vehicle Detection}
 YOLO (You Only Look Once) is a real-time object detection algorithm that processes entire images in a single evaluation pass.
 YOLO divides images into a grid and simultaneously predicts bounding boxes and class probabilities for detected objects. 
-The algorithm's speed and efficiency make it ideal for processing video feeds in near real-time.
+The algorithm's speed and efficiency make it ideal for processing video feeds in near real-time.\cite{YOLO}
 
 \subsection{Parking Space Boundary Detection}
 During the initial system setup, edge detection algorithms are used to assist in defining parking space boundaries from camera feeds. 
@@ -24,7 +24,7 @@ they remain fixed for ongoing operations, serving as reference coordinates for t
 \label{section:algorithm}
 \subsection{Intersection over Union (IoU) for Occupancy Detection}
 Intersection over Union (IoU) is a crucial metric in the KU Parking system used to determine whether a parking space is occupied. 
-The algorithm works by comparing the overlap between two areas: the predefined parking space boundary and the bounding box of any detected vehicle.
+The algorithm works by comparing the overlap between two areas: the predefined parking space boundary and the bounding box of any detected vehicle. \cite{barseghyan2023parking}
 
 The IoU calculation is mathematically defined as:
 
