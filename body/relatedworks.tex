@@ -3,7 +3,9 @@
 
 \section{Competitor Analysis}
 \label{section:competitor-analysis}
-\begin{table}[h]
+\begin{table}[h]\caption{Competitor Analysis for KU Parking}
+    \label{tab:competitor-analysis}
+
     \centering
     \resizebox{\textwidth}{!}{ 
         \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|} 
@@ -12,7 +14,7 @@
             \hline
             \textbf{Target Audience} & Kasetsart University Visitors & General Public in North America & General Public in North America & General Public \\
             \hline
-            \textbf{Target Parking Type} & University Parking & Public or Commercial Parking & Public orCommercial Parking & Commercial Parking \\
+            \textbf{Target Parking Type} & University Parking & Public or Commercial Parking & Public or Commercial Parking & Commercial Parking \\
             \hline
             \textbf{Platform Availability} & Mobile App & Mobile App & Mobile App & Physical Display \\
             \hline
@@ -24,16 +26,14 @@
             \hline
         \end{tabular}
     }
-    \caption{Competitor Analysis for KU Parking}
-    \label{tab:competitor-analysis}
 \end{table}
 
-There are several parking availability provider systems on the market, each offering unique features and technologies, as shown in Table 2.1. The following three systems represent the most significant competitors to KU Parking:
+There are several parking availability provider systems on the market, each offering unique features and technologies, as shown in Table \ref{tab:competitor-analysis}. The following three systems represent the most significant competitors to KU Parking:
 
 \begin{itemize}
-    \item \textbf{\textit{ParkMobile}}---a mobile app that allows users to find, reserve, and pay for parking through their smartphones.
-    \item \textbf{\textit{SpotHero}}---a digital parking reservation service that allows drivers to locate and book parking spaces in garages and lots.
-    \item \textbf{\textit{Parking Guidance System}}---a system that uses digital displays and indicator lights to show parking availability, with vacant spots detected through sensors
+    \item \textbf{\textit{ParkMobile}}---a mobile app that allows users to find, reserve, and pay for parking through their smartphones. \cite{ParkMobile_how_it_works}
+    \item \textbf{\textit{SpotHero}}---a digital parking reservation service that allows drivers to locate and book parking spaces in garages and lots. \cite{SpotHero_how_SpotHero_works}
+    \item \textbf{\textit{Parking Guidance System}}---a system that uses digital displays and indicator lights to show parking availability, with vacant spots detected through sensors. \cite{Parking_Guidance_Systems}
 \end{itemize}
 KU Parking focuses on providing information about parking facilities on the university campus, helping unfamiliar visitors navigate to available parking areas. The system aims to collect data on available spaces using surveillance cameras and an image processing model, delivering the information to users via a mobile application.
 
@@ -44,21 +44,15 @@ Parking management systems have been widely researched to address the challenges
 reducing user frustration when they cannot find available sparking spaces, and improving user convenience. 
 This section reviews related studies and technologies that form the foundation for the KU Parking system.
 
-A study by Barseghyan\cite{barseghyan2023parking} introduced a deep learning-based system for real-time parking occupancy detection using Convolutional Neural Networks (CNNs). 
+A study by Barseghyan \cite{barseghyan2023parking} introduced a deep learning-based system for real-time parking occupancy detection using Convolutional Neural Networks (CNNs). 
 The system processes video feeds from surveillance cameras to identify vacant parking spaces with high accuracy. 
 By leveraging advanced image processing techniques, this approach eliminates the need for individual physical sensors, making it scalable and cost-effective. 
 The use of CNNs aligns with KU Parking's adoption of YOLO (You Only Look Once) for vehicle detection, showcasing the efficacy of computer vision in parking management systems.
 
-An et al.~\cite{an2022epsdnet} proposed EPSDNet, an intelligent detection method that directly uses deep learning 
-for vehicle identification to implement parking detection without relying on lane line detection.
- Their approach constructs a TensorFlow deep learning platform for vehicle detection and determines the optimal time interval for 
- extracting video stream images based on vehicle arrival and departure patterns. 
- The system obtains parking space order and numbering through a combination of the TimSort algorithm and data layering method, 
- while parking space vacancy is judged via the indirect Monte Carlo method. Notably, 
- EPSDNet improves detection accuracy by ensuring greater distance between vehicles in the training dataset compared to those observed during detection. 
- This camera-based approach aligns with KU Parking's goal of utilizing existing surveillance infrastructure rather than installing costly sensor systems for each parking space.
+An et al.~ \cite{an2022epsdnet} proposed EPSDNet, an intelligent detection method that directly uses deep learning 
+for vehicle identification to implement parking detection without relying on lane line detection. Their approach constructs a TensorFlow deep learning platform for vehicle detection and determines the optimal time interval for  extracting video stream images based on vehicle arrival and departure patterns.  The system obtains parking space order and numbering through a combination of the TimSort algorithm and data layering method,  while parking space vacancy is judged via the indirect Monte Carlo method. Notably, EPSDNet improves detection accuracy by ensuring greater distance between vehicles in the training dataset compared to those observed during detection. This camera-based approach aligns with KU Parking's goal of utilizing existing surveillance infrastructure rather than installing costly sensor systems for each parking space.
 
-Ciampi et al.~\cite{ciampi2022multicamera} developed a multi-camera system for vehicle counting in parking lots using edge-AI technology. 
+Ciampi et al.~ \cite{ciampi2022multicamera} developed a multi-camera system for vehicle counting in parking lots using edge-AI technology. 
 Their approach employs a modified Mask R-CNN detector running on edge devices to locate vehicles, combined with a decentralized algorithm that uses homographic transformations to handle overlapping camera views. 
 Testing on the CNRPark-EXT dataset showed significant improvement over single-camera methods, with a mean relative error of just 1.6\%. 
 The system processes data at the source rather than relying on central servers, reducing network bandwidth requirements. 
