@@ -52,35 +52,41 @@
 }{deploy a solution that doesn't require high computing performance on-site% 
 }{I can implement the system with existing resources and minimal operating costs}
 
-\section{Use Case Diagram}
-\label{section:use-case-diagram}
-<TIP: Write a use case diagram for your project here. Refer to an
-article “What is a use case diagram?” by Lucidchart for help./>
+% \section{Use Case Diagram}
+% \label{section:use-case-diagram}
+% <TIP: Write a use case diagram for your project here. Refer to an
+% article “What is a use case diagram?” by Lucidchart for help./>
 
-\section{Use Case Model}
-\label{section:use-case-model}
-A use case is a detailed description of how a system
-interacts with an external entity (such as a user or another system) to
-accomplish a specific goal. Use cases provide a high-level view of the
-functionality of a system and help in capturing and documenting its
-requirements from the perspective of end users.
+% \section{Use Case Model}
+% \label{section:use-case-model}
+% A use case is a detailed description of how a system
+% interacts with an external entity (such as a user or another system) to
+% accomplish a specific goal. Use cases provide a high-level view of the
+% functionality of a system and help in capturing and documenting its
+% requirements from the perspective of end users.
 
-<TIP: Write use cases for your project here. Make sure to use the
-appropriate type of use case for each scenario (brief, casual, and fully-dressed
-use case)./>
+% <TIP: Write use cases for your project here. Make sure to use the
+% appropriate type of use case for each scenario (brief, casual, and fully-dressed
+% use case)./>
 
 \section{User Interface Design}
 \label{section:user-interface-design}
-The user interface of KU Parking emphasizes usability and mobile compatibility. It includes familiar components commonly found in map applications, prioritizing the reduction of the learning curve and allowing users to navigate the app.
+KU Parking's user interface emphasizes usability and mobile compatibility. It includes familiar components commonly found in map applications, prioritizing the reduction of the learning curve and allowing users to navigate the app. 
+
+Figure \ref{fig:ui_parking_indication} illustrates the user interface design for parking indication. Each parking area is marked on the map with a pin displaying the number of available spots in that area. Additionally, a drawer (at the bottom of the page) provides a list of parking lots along with availability information, offering an alternative view of parking availability.
+
+Figure \ref{fig:ui_navigation} presents the user interface design for navigation. Users can select a parking area from either the map or the drawer list and navigate from their current location to the chosen parking area.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{ui-design/parking-indication.png}
     \caption{User Interface Design for Parking Indication}
+    \label{fig:ui_parking_indication}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{ui-design/navigation.png}
     \caption{User Interface Design for Navigation}
+    \label{fig:ui_navigation}
 \end{figure}
