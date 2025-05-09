@@ -48,10 +48,9 @@ By integrating a detection model, KU Parking can reduce the cost of installing a
 \section{Goal Hierarchy}
 \label{section:goal-hierarchy}
 
-\subsection{Organization Goals}
-\label{subsection:organization-goal}
+The tables in this section outline the goals for the KU Parking system at different levels: Organizational (Table \ref{tab:organization-goal}), System (Table \ref{tab:system-goal}), User (Table \ref{tab:user-goal}), and AI Model (Table \ref{tab:ai-model-goal}). Each table details the goal, how it will be measured, the data collection methods, and how the goal will be operationalized.
 
-\begin{table}[h]\caption{Organizational Goals of KU Parking}
+\begin{table}[H]\caption{Organizational Goals of KU Parking}
     \label{tab:organization-goal}
     \centering
     \resizebox{\textwidth}{!}{ 
@@ -67,17 +66,51 @@ By integrating a detection model, KU Parking can reduce the cost of installing a
     }
 \end{table}
 
-\subsection{System Goals}
-\label{subsection:system-goal}
-significant damage.
+\begin{table}[H]\caption{System Goals of KU Parking}
+    \label{tab:system-goal}
+    \centering
+    \resizebox{\textwidth}{!}{ 
+        \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|} 
+            \hline
+            \textbf{System Goals} & \textbf{Identified Measure} & \textbf{Data Collection} & \textbf{Operationalization} \\
+            \hline
+            Provide availability of the parking spots & Detection accuracy, latency & Model output compare to real status & Percentage of correct indication \\
+            \hline
+            Presenting alternative parking area & Number of parking between parking area & Logs of number of parking car in each parking area & Compare parking data between parking areas \\
+            \hline
+        \end{tabular}
+    }
+\end{table}
 
-\subsection{User Goals}
-\label{subsection:user-goal}
-significant damage.
+\begin{table}[H]\caption{User Goals of KU Parking}
+    \label{tab:user-goal}
+    \centering
+    \resizebox{\textwidth}{!}{ 
+        \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|} 
+            \hline
+            \textbf{User Goals} & \textbf{Identified Measure} & \textbf{Data Collection} & \textbf{Operationalization} \\
+            \hline
+            Quickly find optimal available parking spaces & User satisfaction rating & User feedback survey, app usage analytics & Regular user satisfaction surveys and Usage frequency \\
+            \hline
+        \end{tabular}
+    }
+\end{table}
 
-\subsection{AI Model Goals}
-\label{subsection:ai-model-goal}
-significant damage.
+\begin{table}[H]\caption{AI Model of KU Parking}
+    \label{tab:ai-model-goal}
+    \centering
+    \resizebox{\textwidth}{!}{ 
+        \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|p{4cm}|} 
+            \hline
+            \textbf{AI Model Goals} & \textbf{Identified Measure} & \textbf{Data Collection} & \textbf{Operationalization} \\
+            \hline
+            Accurately detect vacant space & Precision, recall, F1 score & Annotated images, prediction logs & Model evaluation using labeled datasets \\
+            \hline
+            Operate efficiently in close to real time & latency & System logs & Measure average time per image/frame \\
+            \hline
+        \end{tabular}
+    }
+\end{table}
 
 \section{Task Requirements Analysis Using AI Canvas}
 \label{section:task-requirement-analysis-using-ai-canvas}
