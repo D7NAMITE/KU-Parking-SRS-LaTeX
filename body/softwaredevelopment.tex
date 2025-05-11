@@ -24,8 +24,12 @@
 % It can be in the form of a burndown chart or a contribution graph from GitHub./>
 
 \section{Business Context \& AI Integration}
-
 \label{section:business-context-ai-integration}
+
+KU Parking has integrated model for the detection of available parking spots. Figure \ref{fig:overview-system-flow} provides a system overview: surveillance cameras monitor the parking area, feeding video to a local surveillance footage server. Periodically, individual frames from the video stream are extracted and processed by the model (as outlined in Figure \ref{fig:model-flow}). The model performs object detection to locate both cars and parking spaces within the image. Subsequently, it calculates the Intersection over Union (IoU), a metric quantifying the overlap between each detected vehicle's bounding box and the defined area of a parking spot. By comparing the IoU against a set threshold, the system determines if a vehicle significantly occupies a parking space, thus indicating its availability. This output is served to the client by the service server.
+
+By integrating a detection model, KU Parking can reduce the cost of installing a parking indication system by leveraging existing infrastructure. To inform users, parking availability requires continuous monitoring, as the availability and usage of parking spots can change throughout the day. The model helps automate this continuous monitoring process by analyzing feeds, providing up-to-date information on parking spot occupancy. The incorrect detections typically result in minor user frustration rather than significant damage.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{diagrams/system-flow/overview-system-flow.png}
@@ -40,16 +44,11 @@
     \label{fig:model-flow}
 \end{figure}
 
-
-KU Parking has integrated AI for the detection of available parking spots. Figure \ref{fig:overview-system-flow} provides a system overview: surveillance cameras monitor the parking area, feeding video to a local surveillance footage server. Periodically, individual frames from the video stream are extracted and processed by the model (as outlined in Figure \ref{fig:model-flow}). The model performs object detection to locate both cars and parking spaces within the image. Subsequently, it calculates the Intersection over Union (IoU), a metric quantifying the overlap between each detected vehicle's bounding box and the defined area of a parking spot. By comparing the IoU against a set threshold, the system determines if a vehicle significantly occupies a parking space, thus indicating its availability. This output is served to the client by the service server.
-
-By integrating a detection model, KU Parking can reduce the cost of installing a parking indication system by leveraging existing infrastructure. To inform users, parking availability requires continuous monitoring, as the availability and usage of parking spots can change throughout the day. The model helps automate this continuous monitoring process by analyzing feeds, providing up-to-date information on parking spot occupancy. The incorrect detections typically result in minor user frustration rather than significant damage.
-
 \clearpage
 \section{Goal Hierarchy}
 \label{section:goal-hierarchy}
 
-The tables in this section outline the goals for the KU Parking system at different levels: Organizational (Table \ref{tab:organization-goal}), System (Table \ref{tab:system-goal}), User (Table \ref{tab:user-goal}), and AI Model (Table \ref{tab:ai-model-goal}). Each table details the goal, how it will be measured, the data collection methods, and how the goal will be operationalized.
+The tables in this section outline the goals for the KU Parking system at different levels: Organizational (Table \ref{tab:organization-goal}), System (Table \ref{tab:system-goal}), User (Table \ref{tab:user-goal}), and AI Model (Table \ref{tab:ai-model-goal}). Each table details the goal, how it will be measured, the data collection, and the operationalization.
 
 \begin{table}[H]\caption{Organizational Goals of KU Parking}
     \label{tab:organization-goal}
@@ -61,7 +60,7 @@ The tables in this section outline the goals for the KU Parking system at differ
             \hline
             Enhance on-campus driver experience & User satisfaction rating & User feedback survey, app usage analytics & Regular user satisfaction surveys and Usage frequency \\
             \hline
-            Promote smart campus development with cost-effective tech & System installation and maintenance cost and alternatives & Record of KU Parking development and deployment expenses & Compare installation and operational costs to alternatives \\
+            Promote campus development with cost-effective technology & System installation and maintenance cost and alternatives & Record of KU Parking development and deployment expenses & Compare installation and operational costs to alternatives \\
             \hline
         \end{tabular}
     }
@@ -77,7 +76,7 @@ The tables in this section outline the goals for the KU Parking system at differ
             \hline
             Provide availability of the parking spots & Detection accuracy, latency & Model output compare to real status & Percentage of correct indication \\
             \hline
-            Presenting alternative parking area & Number of parking between parking area & Logs of number of parking car in each parking area & Compare parking data between parking areas \\
+            Presenting alternative parking area & Number of parking between parking area & Logs of number of parking car around the same area & Compare parking data between parking areas within the close area \\
             \hline
         \end{tabular}
     }
@@ -97,7 +96,7 @@ The tables in this section outline the goals for the KU Parking system at differ
     }
 \end{table}
 
-\begin{table}[H]\caption{AI Model of KU Parking}
+\begin{table}[H]\caption{AI Model Goals of KU Parking}
     \label{tab:ai-model-goal}
     \centering
     \resizebox{\textwidth}{!}{ 
@@ -107,7 +106,7 @@ The tables in this section outline the goals for the KU Parking system at differ
             \hline
             Accurately detect vacant space & Precision, recall, F1 score & Annotated images, prediction logs & Model evaluation using labeled datasets \\
             \hline
-            Operate efficiently in close to real time & latency & System logs & Measure average time per image/frame \\
+            Operate efficiently in close to real time & Latency & System logs & Measure average time used for processing per image/frame \\
             \hline
         \end{tabular}
     }
@@ -128,7 +127,7 @@ The tables in this section outline the goals for the KU Parking system at differ
   \item \textbf{Specifications (SPEC)}
   \begin{itemize}
     \item Use the YOLO (You Only Look Once) object detection model to identify vehicles in each video frame.
-    \item Define parking spot boundaries through edge detection and manual annotation during initial setup.
+    \item Define parking spot boundaries through edge detection assistance and manual annotation during initial setup.
     \item Apply the Intersection over Union (IoU) algorithm to compare vehicle bounding boxes with parking space boundaries. If the IoU exceeds a predefined threshold, the system marks the space as occupied; otherwise, it is marked as vacant.
   \end{itemize}
   \item \textbf{Environment (ENV)}
@@ -153,13 +152,13 @@ The KU Parking Machine Learning Canvas (Table \ref{tab:ml-canvas}) outlines how 
 \hline
 \multicolumn{2}{|c|}{\cellcolor{cyan!15}\textbf{PREDICT}} \\ \hline
 \textbf{Decisions} & Determine whether each parking space is occupied or vacant.\\ \hline
-\textbf{ML Task} & Object Detection (YOLO) on surveillance frames and postprocessing (IoU) to determine parking spot status.\\ \hline
-\textbf{Making Predictions} & Rerun on set interval\\ \hline
+\textbf{ML Task} & Car Detection (YOLO) on surveillance frames and postprocessing (IoU) to determine parking spot status.\\ \hline
+\textbf{Making Predictions} & Run on set interval and frequency\\ \hline
 \textbf{Offline Evaluation} & Use precision, recall, and F1-score on validation data. \\ \hline
 
 \multicolumn{2}{|c|}{\cellcolor{yellow!15}\textbf{LEARN}} \\ \hline
-\textbf{Data Sources} & Video frames from campus surveillance cameras and other footage (for training). \\ \hline
-\textbf{Collecting Data} & Frames are periodically extracted and labeled (for parking spot boundaries) during the setup phase. \\ \hline
+\textbf{Data Sources} & Video frames from campus surveillance cameras and other surveillance footage (for training). \\ \hline
+\textbf{Collecting Data} & Frames are periodically extracted and labeled (for parking spot boundaries). \\ \hline
 \textbf{Features} & Bounding boxes of vehicles from YOLO and parking boundaries annotated manually with edge detection assist. \\ \hline
 \textbf{Building Models} & Train YOLO-based model with annotated images. Use IoU threshold to determine parking status. \\ \hline
 
