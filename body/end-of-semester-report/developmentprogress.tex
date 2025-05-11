@@ -11,8 +11,16 @@ Figure \ref{fig:timeline-dev-progress} illustrates the proposed timeline for the
 
 \section{Modules Developed}
 \label{section:module-developed}
-In this semester, we worked on the Car Detection Model, which includes the following files:
-% TODO: Add Module Explanation
+During this semester, we developed the Car Detection Model. The source code is accessible in the GitHub Repository at \href{https://github.com/ReggieReo/ku-parking-ai-component/blob/main/gran-cam.py}{ku-parking-ai-component} or scan QR-code in Figure~\ref{fig:github-repo-ai-component-qr}.
+\begin{itemize}
+    \item \textbf{mlruns (directory)}: This directory stores the versioning of model
+    \item \textbf{eda.py}: This script performs exploratory data analysis to understand the dataset.
+    \item \textbf{mlflow\_setup.py}: This script is used to set up and configure the MLflow.
+    \item \textbf{test\_local.py}: This file contains local tests for model.
+    \item \textbf{video\_to\_image.py}: This script converts video input into individual image frames for model processing.
+    \item \textbf{yolo\_training.py}: This script is used to train the YOLO (You Only Look Once) object detection model.
+    \item \textbf{gran-cam.py}: This script generates and displays Grad-CAM visualizations, highlighting the key image regions that the trained YOLO model focuses on to detect specific objects, thereby aiding in understanding the model's decision-making process.
+\end{itemize}
 
 \section{Screenshot}
 \label{section:screenshot}
