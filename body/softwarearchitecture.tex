@@ -73,17 +73,25 @@ The IoU value ranges from 0 to 1, where:
 
 Our algorithm for determining parking space occupancy follows this process:
 
+\noindent \textbf {For each frame captured by the surveillance camera:}
 \begin{enumerate}
-    \item For each frame captured by the surveillance camera:
+    \item Detect Vehicles:
     \begin{itemize}
         \item Apply YOLO to detect vehicles and generate their bounding boxes
+        \item Extract the bounding boxes for each detected vehicle.
+    \end{itemize}
+    \item Evaluate Parking Availability:
+    \begin{itemize}
         \item For each predefined parking space boundary:
         \begin{itemize}
-            \item Calculate the IoU with each detected vehicle bounding box
-            \item If any IoU value exceeds a predefined threshold, classify the space as occupied
-            \item If no IoU value exceeds the threshold, classify the space as vacant
+            \item Calculate the Intersection over Union (IoU) between the parking space and each detected vehicle's bounding box.
+            \item If any IoU value exceeds a predefined threshold, classify the
+space as occupied
+            \item If no IoU value exceeds the threshold, classify the space as
+vacant
         \end{itemize}
     \end{itemize}
+\end{enumerate}
     
     % \item Apply temporal filtering to reduce false positives:
     % \begin{itemize}
