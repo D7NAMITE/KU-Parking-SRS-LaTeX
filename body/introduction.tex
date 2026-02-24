@@ -25,7 +25,7 @@ The implementation of a parking indicator system can be costly and impractical, 
 \section{Solution Overview}
 \label{section:solution-overview}
 
-KU-Parking is a system consisting of two main components: the parking detection system and the mobile application. The parking detection system uses existing surveillance cameras or portable camera modules to monitor parking spaces and processes the camera feeds through cloud-based computer vision. It integrates YOLO for vehicle detection and uses Intersection over Union (IoU) calculations to determine occupancy. The mobile application provides users with parking availability information, guiding them directly to vacant spots, without the need for additional infrastructure installation.
+KU Parking is a system consisting of two main components: the parking detection system and the mobile application. The parking detection system uses existing surveillance cameras or portable camera modules to monitor parking spaces and processes the camera feeds through cloud-based computer vision. It integrates YOLO for vehicle detection and uses Intersection over Union (IoU) calculations to determine occupancy. The mobile application provides users with parking availability information, guiding them directly to vacant spots, without the need for additional infrastructure installation.
 
 \subsection{Features}
 \label{subsection:features}
@@ -38,7 +38,12 @@ KU-Parking is a system consisting of two main components: the parking detection 
     
     \item Mobile Parking Area Map: Displays parking lot locations across campus with real-time availability information. Integrates with third-party mapping services like Google Maps for turn-by-turn navigation to available parking areas.
     
-    \item No Additional Installation Required: Utilizes existing surveillance cameras already installed throughout campus, eliminating the need for additional sensors or hardware.
+    \item Minimize Installation Requirements: Designed to process standard video feeds, minimizing the need for costly sensor installations.
+    using campus demo footage.
+
+    \item Parking Administrative Portal: A web-based portal that allows
+    admins to view the parking spot detection model output and manually draw, or delete parking
+    spot boundaries.
 \end{enumerate}
 
 \section{Target Users}
@@ -55,7 +60,7 @@ Our primary target users are drivers navigating to the Kasetsart University camp
 \label{section:benefit}
 
 % Describe potential benefits of your solution.
-The KU-Parking solution offers several significant advantages:
+The KU Parking solution offers several significant advantages:
 
 \begin{enumerate}[leftmargin=80pt]
     \item Time Savings: Reduces driving time by providing real-time navigation to available parking spots.
@@ -87,3 +92,14 @@ Following the successful implementation of both models, the Application Developm
 
     \item[IoU (Intersection over Union)] A metric used in computer vision to calculate the overlap between predicted and actual object boundaries, used in this system to determine parking space occupancy.   
 \end{description}
+
+\section{Proof of Concept (POC)}
+\label{section:proof-of-concept}
+This project is currently in the Proof of Concept (POC) phase to test the feasibility of using computer vision for campus parking. During this stage, the team focuses on two core areas:
+\begin{itemize}
+    \item Data Source: Instead of connecting to live campus cameras, the system uses recorded video  captured manually at Kasetsart University parking area and footage from the internet as a data source for demostration.
+    
+    \item System Testing: The models will be working in a simulated environment, processing the video data to determine parking availability and provide a information output that can be used for the mobile application.
+\end{itemize}
+
+By using recorded demo footage, the team can safely test the software's accuracy and the app's user interface without needing permanent hardware installation or live network access during development.
