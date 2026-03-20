@@ -3,44 +3,136 @@
 
 \section{Software Solution}
 \label{section:software-solution}
-Following an iterative development process, we have successfully deployed an integrated system comprising a mobile application, a detection model, and a supporting infrastructure. The core of the system is a parking occupancy model that analyzes video feeds to evaluate and broadcast the spot vacancy status. This system leverages Computer Vision and Convolutional Neural Networks (CNNs) as detailed in Chapter 4 and Chapter 5 to transform raw visual data into actionable navigation insights for the end user.
+Following an iterative development process, we have successfully developed a
+system consisting of a mobile application, a parking facilitator web application,
+a detection model, and the supporting infrastructure. Each component serves a
+distinct purpose: the mobile application assists drivers in locating vacant
+parking spots, while the parking facilitator web application serves as an
+administrative portal for parking area owners to manage and tune their specific
+locations within the system. 
 
-Our repositories are available at https://github.com/ku-parking. The following sections of this chapter provide an overview of our mobile application.
+Our repositories are available at https://github.com/ku-parking. The following sections of this chapter provide a detailed
+overview of the features and interfaces for both the mobile and web applications.
+
+
 \subsection{Map Overview}
 \label{subsection:map-overview}
 The Map Overview serves as the initial screen when a user enters the application. As shown in Figure \ref{fig:map-overview-screenshot}, the interface follows a typical map-navigation layout with a map serving as the primary source of information. The map displays the user's current location alongside parking area markers that indicate availability through both numerical values and color-coding. The color indicators are defined by the percentage of vacant spots relative to total capacity: Green represents vacancy of 70\% or higher, Yellow represents vacancy more than or equal 30\% but less than 70\%, and Red represents vacancy below 30\%. At the top of the screen, a search bar allows users to locate specific parking areas. At the bottom, a sheet drawer provides a list of all available areas, which users can select to view more granular details.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{screenshots/overview-map.png}
+    \includegraphics[width=0.48\textwidth]{screenshots/overview-map.png}
     \caption{A screenshot of the map overview.}
 \label{fig:map-overview-screenshot}
 \end{figure}
 
 \subsection{Parking Spot Detail}
 \label{subsection:parking-spot-detail}
-When a user selects a specific parking area via the bottom sheet or the search bar, the detailed view for that location is displayed. As shown in Figure \ref{fig:parking-spot-detail-screenshot}, these details include the parking area name, the current number of vacant spots, and a timestamp indicating when the information was last updated. The \"Navigation\" button redirects users to their device’s native navigation application (such as Apple Maps or Google Maps) to provide directions to the selected parking area. Additionally, the \"Report Inaccurate Info\" button allows users to flag discrepancies in the data, a process which is discussed in greater detail in the following section.
+When a user selects a specific parking area via the bottom sheet (as shown in Figure \ref{fig:parking-spot-detail-clicking-bottom-sheet-screenshot}) or the search bar (as shown in Figure \ref{fig:parking-spot-detail-clicking-search-screenshot}), the detailed view for that location is displayed. As shown in Figure \ref{fig:parking-spot-detail-screenshot}, these details include the parking area name, the current number of vacant spots, and a timestamp indicating when the information was last updated. The "Navigation" button redirects users to their device’s native navigation application (such as Apple Maps or Google Maps) to provide directions to the selected parking area. Additionally, the "Report Inaccurate Info" button allows users to flag discrepancies in the data, a process which is discussed in greater detail in the following section.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{screenshots/parking-detail.png}
+    \includegraphics[width=0.48\textwidth]{screenshots/parking-detail-clicking-bottom-sheet.png}
+    \caption{A screenshot of the bottom sheet listing a parking spot. The red arrow shows where the user can click to view the parking spot detail.}
+\label{fig:parking-spot-detail-clicking-bottom-sheet-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/parking-detail-click-search.png}
+    \caption{A screenshot of the search results showing a parking spot. The red arrow shows where the user can click to view the parking spot detail.}
+\label{fig:parking-spot-detail-clicking-search-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/parking-detail.png}
     \caption{A screenshot of the parking spot detail.}
 \label{fig:parking-spot-detail-screenshot}
 \end{figure}
 
-\subsection{Search}
-\label{subsection:search}
-[Add your text here about Search functionality]
+\subsection{Parking Area Search}
+\label{subsection:parking-area-search}
+The search bar is located at the top of the screen, allowing users to tap and input the name of a specific parking area in the system. As the user types, the system filters the results to display matching parking areas, as shown in Figure \ref{fig:search-typing-screenshot}. When a user selects a result from the list, the detail view for that specific parking lot is displayed, as shown in Figure \ref{fig:search-select-parking-screenshot}.
 
-\subsection{Report}
-\label{subsection:report}
-[Add your text here about Search functionality]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/search-typing.png}
+    \caption{A screenshot of the search bar in use.}
+\label{fig:search-typing-screenshot}
+\end{figure}
 
-\subsection{Navigation}
-\label{subsection:navigation}
-[Add your text here about Search functionality]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/search-select-parking.png}
+    \caption{A screenshot of the search results showing a parking spot detail.}
+\label{fig:search-select-parking-screenshot}
+\end{figure}
+
+\subsection{Parking Area Navigation}
+\label{subsection:parking-area-navigation}
+Users can initiate navigation to a selected parking area by tapping the
+"Navigation" button, as shown in Figure \ref{fig:navigation-clicking-screenshot}.
+This action launches the device's native navigation application, automatically
+setting a route from the user's current location to the selected parking area.
+The specific external navigator used depends on the device's operating system:
+iOS devices redirect to Apple Maps, while Android devices redirect to Google
+Maps. Figure \ref{fig:navigation-external-map-screenshot} illustrates the
+navigation interface as it appears on an iOS device.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/navigation-clicking.png}
+    \caption{A screenshot of the navigation button.}
+\label{fig:navigation-clicking-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/navigation-external-map.png}
+    \caption{A screenshot of the external map application that navigation redirects to.}
+\label{fig:navigation-external-map-screenshot}
+\end{figure}
+
+
+
+\subsection{Inaccuracy Report}
+\label{subsection:inaccuracy-report}
+In the event of data discrepancies, users can report incorrect information to
+the parking facility by tapping the “Report Inaccurate Info” button, as shown in
+Figure \ref{fig:report-clicking-screenshot}. This action opens a reporting form
+that allows the user to select a specific reason for the report and provide an
+optional description, as illustrated in Figure \ref{fig:report-form-screenshot}.
+Upon successful submission, a confirmation message is displayed, as shown in
+Figure \ref{fig:report-success-screenshot}. This feature empowers the end-user
+to notify the parking area owner of potential data inaccuracies, ensuring the
+system remains reliable through community-driven feedback.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/report-clicking.png}
+    \caption{A screenshot of the report button.}
+\label{fig:report-clicking-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/report-form.png}
+    \caption{A screenshot of the report form.}
+\label{fig:report-form-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{screenshots/report-success.png}
+    \caption{A screenshot of the successful report submission.}
+\label{fig:report-success-screenshot}
+\end{figure}
+
+
 
 \section{Test Report}
 \label{section:test-report}
 <TIP: Describe how you test your project. Place a test report here.
-If you use continuousintegration and deployment (CI/CD) tools, describe your
+If you use continuous integration and deployment (CI/CD) tools, describe your
 CI/CD method here. />
