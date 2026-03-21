@@ -94,8 +94,6 @@ navigation interface as it appears on an iOS device.
 \label{fig:navigation-external-map-screenshot}
 \end{figure}
 
-
-
 \subsection{Mobile Application - Inaccuracy Report}
 \label{subsection:mobile-inaccuracy-report}
 In the event of data discrepancies, users can report incorrect information to
@@ -171,6 +169,28 @@ that the model can detect.
     \caption{A screenshot of the preview of the detection model results.}
 \label{fig:web-detection-model-result-screenshot}
 \end{figure}
+
+To manually define a new parking spot, the user can click the '+ Add Spot'
+button. This action triggers an on-screen prompt, 'Click and drag to draw a new
+parking spot,' which appears at the top of the preview window as shown in Figure
+\ref{fig:web-add-parking-spot-before-screenshot}. The user can then click and
+drag their cursor across the preview to create a new detection boundary, as
+illustrated in Figure \ref{fig:web-add-parking-spot-after-screenshot}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{admin-web-app-screenshots/add-parking-spot001.png}
+    \caption{A screenshot of adding a parking spot (Before adding).}
+\label{fig:web-add-parking-spot-before-screenshot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{admin-web-app-screenshots/add-parking-spot002.png}
+    \caption{A screenshot of adding a parking spot (After adding).}
+\label{fig:web-add-parking-spot-after-screenshot}
+\end{figure}
+
 
 The parking spots initially identified by the detection model can be manually refined by clicking on the green rectangles that indicate the parking spot placeholders. Once a specific spot is selected, its border changes to blue to signify it is in edit mode, as shown in Figure \ref{fig:web-detection-model-adjusting-before-screenshot}. The user can then adjust the boundaries by selecting an edge of the placeholder and dragging it to the desired position. This allows for precise calibration of the detection zones, with the final adjusted area shown in Figure \ref{fig:web-detection-model-adjusting-after-screenshot}.
 
