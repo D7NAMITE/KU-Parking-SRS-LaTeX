@@ -1,32 +1,79 @@
 \chapter{Software Architecture Design}
 % \label{chap:software-architecture-design}
-% <TIP: Describe how you design your application using Unified Modelling
-% Language (UML). There should be at least two diagrams that describe the
-% software architecture. You may add additional or remove unnecessary diagrams.
-% However, there needs to be a coherency between them at the end./>
+This chapter outlines the architectural framework of the KU Parking system. It establishes the Domain Model to define core business entities and the Design Class Diagram to illustrate the static structure and modularity of the mobile and web applications. Furthermore, it details the integration of the AI Component and the Intersection over Union (IoU) algorithm, explaining how computer vision data flows through the model.
 
-% \section{Domain Model}
-% \label{section:domain-model}
-% <TIP: Describe the business concept of your project. Showcase a
-% domain model that captures the said concept./>
+\section{Domain Model}
+\label{section:domain-model}
 
-% \section{Design Class Diagram}
-% \label{section:design-class-diagram}
-% <TIP: Showcase a design class diagram for your project and explain
-% how it works here. You can group classes into packages or layers to communicate your
-% design better./>
+\subsection{Mobile Application Domain Diagram}
+\label{subsection:mobile-application-domain-diagram}
+The domain model diagram in Figure \ref{fig:mobile-application-domain-diagram} delineates the core conceptual entities within the KU Parking application and their relational logic, abstracting away platform-specific implementation details to focus on fundamental business rules. The system revolves around the central "ParkingSpot" entity, which tracks key information such as its name, capacity, real-time availability, and visual status indication. The primary actor, the "User", interacts with the domain through three main interactions: searching for parking areas, submitting an "IssueReport" to flag inaccuracies like closed lots or incorrect availability, and generating a "NavigationRoute" to accurately reach a chosen destination. Both the user's current position and the parking spots themselves are spatially defined through composition with a "Location" value object holding geographic coordinates. Ultimately, this structural representation maps the conceptual flow of user-driven actions as they query, navigate towards, and evaluate physical parking locations in the system.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrams/mobile-app/domain_diagram.png}
+    \caption{Domain diagram illustrating the key concepts and relationships in the KU Parking mobile application.}
+\label{fig:mobile-application-domain-diagram}
+\end{figure}
 
-% \section{Sequence Diagram}
-% \label{section:sequence-diagram}
-% <TIP: Sequence diagrams describe how the software runs at runtime.
-% You do not have to create a sequence diagram for every scenario. However,
-% there should be one for all the main ones./>
+\subsection{Web Application Domain Diagram}
+\label{subsection:web-application-domain-diagram}
+The domain model diagram Figure \ref{fig:web-application-domain-diagram} abstracts away technical implementation details to
+illustrate the core business concepts and fundamental relationships within the
+parking system. At the highest conceptual level, the "ParkingArea" serves as the
+aggregate root, defining the overall parking location through essential
+properties such as its total capacity and its geographic coordinates via the
+"GeoLocation" value object. The aggregate primarily manages two distinct
+entities: the "ParkingSpace", representing individual physical stalls whose
+spatial boundaries are defined by a "BoundingBox", and the "IssueReport", which
+logs anomaly feedback submitted by users. To integrate the AI capabilities
+purely on a conceptual level, the model introduces the "DetectionResult" value
+object. This component encapsulates the inference engine's confidence scores and
+object classifications---mapped to its respective "BoundingBox"---which
+subsequently determines and updates the real-time occupancy status of each
+"ParkingSpace" entity.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrams/web-app/domain_diagram.png}
+    \caption{Domain diagram illustrating the key concepts and relationships in the KU Parking web application.}
+\label{fig:web-application-domain-diagram}
+\end{figure}
 
-% <ChatGPT: Creating a sequence diagram for every use case is not
-% strictly necessary, but it can be a valuable tool in certain situations. Sequence
-% diagrams are particularly useful for illustrating the interactions between different
-% components or objects in a system over time, showcasing the flow of messages
-% or actions between them./>
+
+\section{Design Class Diagram}
+\label{section:design-class-diagram}
+
+\subsection{Mobile Application Class Diagram}
+\label{subsection:mobile-application-class-diagram}
+The class diagram in Figure \ref{fig:mobile-application-class-diagram} illustrates the component-based architecture of the KU Parking
+Mobile App, highlighting the relationships between the primary user interface
+modules and the underlying data models. At the core of the system is the 'Index'
+component, which serves as the main controller managing the application's state,
+including the selected parking spot, current search query, and issue reporting
+workflow. The 'Index' component utilizes composition to render modular,
+single-purpose child components such as 'ParkingMap', 'SearchBar', 'SpotList',
+'SpotDetail', and 'ReportIssue'. Each child component strictly adheres to
+defined interface contracts (e.g., 'ParkingMapProps', 'SpotDetailProps') that
+specify their required data properties and callback event handlers. Furthermore,
+the presentation layer interacts seamlessly with the domain logic by depending
+on the shared 'ParkingSpot' entity type and the centralized 'parkingData'
+configuration module, ensuring a clear separation of concerns and robust data
+consistency across the application.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{diagrams/mobile-app/class_diagram.png}
+    \caption{Design class diagram illustrating the structure and relationships of the KU Parking mobile application.}
+\label{fig:mobile-application-class-diagram}
+\end{figure}
+
+\subsection{Web Application Class Diagram}
+\label{subsection:web-application-class-diagram}
+This class diagram in Figure \ref{fig:web-application-class-diagram} illustrates the holistic architecture of the parking application, encapsulating both the core domain entities and the integrated AI service components. At the center of the domain is the "ParkingSpot" entity, which acts as an aggregate root containing multiple "Coordinate" objects that define distinct physical parking spaces, alongside associated "IssueReport" entities that track user-submitted feedback. The system distinguishes business logic through dedicated service controllers—namely "ParkingSpotService" and "IssueReportService"—which handle data persistence and API operations. Concurrently, the AI functionality is abstracted through the "AIServiceAPI", which processes video frame inputs and relies on structural interfaces such as "Detection", "BoundingBox", and "SpotOccupancy" to continuously evaluate and update the real-time availability of each parking space.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{diagrams/web-app/web_app_class_diagram.png}
+    \caption{Design class diagram illustrating the structure and relationships of the KU Parking web application.}
+\label{fig:web-application-class-diagram}
+\end{figure}
 
 \section{AI Component}
 \label{section:ai-component}
