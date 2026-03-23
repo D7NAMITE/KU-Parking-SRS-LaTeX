@@ -252,6 +252,145 @@ Upon clicking 'Save \& Start', the system officially registers the parking lot a
 
 \section{Test Report}
 \label{section:test-report}
-<TIP: Describe how you test your project. Place a test report here.
-If you use continuous integration and deployment (CI/CD) tools, describe your
-CI/CD method here. />
+
+\subsection{Software Test Report}
+\label{subsection:software-test-report}
+
+Our testing strategy encompasses unit tests, integration tests, and cross-service validation across all major components of the system. The following subsections detail the test implementation and results for each service.
+
+\subsubsection{AI Service Testing}
+
+The AI service is tested using the pytest framework to validate critical functionality including environment configuration, caching mechanisms, and API endpoints. The test suite includes the following coverage areas:
+
+\begin{itemize}
+    \item Environment and settings loading with default value validation
+    \item Redis singleton instance behavior and cache write operations
+    \item Database coordinate caching behavior
+    \item FastAPI endpoints
+\end{itemize}
+
+\noindent\textbf{Result:} All 7 tests passed successfully.
+
+\subsubsection{Parking Spot Web-applicationInterface Testing}
+
+The parking spot interface is tested using the Vitest framework with both unit and integration test suites. The test coverage includes:
+
+\begin{itemize}
+    \item Backend API wrapper success and failure behavior validation
+    \item Environment variable validation mechanisms
+    \item Server action seam behavior with mocked database and S3 storage
+    \item Rewrite contract expectation verification
+\end{itemize}
+
+\noindent\textbf{Result:} All 8 tests passed successfully.
+
+\subsubsection{Mobile Backend Testing}
+
+The mobile backend service is tested using Go's standard testing package and httptest for HTTP testing. The test suite validates core HTTP helper functions and API endpoint behavior:
+
+\begin{itemize}
+    \item HTTP JSON helper functions and environment variable defaults
+    \item Issue report validation before database access
+    \item API error response handling (HTTP 400 errors) without external dependencies
+    \item API health check endpoint (GET /) functionality
+\end{itemize}
+
+\noindent\textbf{Result:} All 9 tests passed successfully.
+
+\subsubsection{Cross-Service Integration Testing}
+
+A comprehensive integration harness (full\_stack\_test.sh) validates the interaction between all services in a unified environment. The integration test workflow includes:
+
+\begin{itemize}
+    \item Docker Compose startup readiness verification
+    \item Database schema initialization and fixture seeding
+    \item AI service frame processing (/frame) response validation and Redis occupancy key assertion
+    \item Interface rewrite assertion through backend API endpoint
+    \item Optional mobile backend contract verification
+\end{itemize}
+
+\noindent\textbf{Result:} Full integration test passed with all services communicating correctly and data flow validated end-to-end.
+
+\subsubsection{Continuous Integration and Deployment}
+
+The project implements a CI/CD pipeline that automatically executes tests on code changes. The workflow structure includes:
+
+\begin{itemize}
+    \item Per-service unit and integration tests executed on push and pull requests
+    \item Full-stack integration testing when enabled
+    \item Deterministic test execution through service image rebuilding before startup
+    \item Mocked detection support for stable frame processing validation
+    \item Manual test rerun capability via workflow\_dispatch
+\end{itemize}
+
+\subsection{Model Evaluation}
+\label{subsection:model-evaluation}
+
+To evaluate model generalization, we compared two training-data strategies:
+Configuration A (100\% fish-eye camera data) and Configuration B (40\%
+fish-eye camera data combined with broader non-fish-eye samples). The model
+trained with Configuration B was selected for deployment because it provides
+better generalization and reduces overfitting to fish-eye lens characteristics.
+
+The paper \textit{Context-Based Parking Slot Detection With a Realistic
+Dataset} presents an autonomous parking slot detection method evaluated on a
+realistic, context-rich dataset designed to reflect practical parking-scene
+variability. In this project, we used the dataset from that work as one part
+of our training dataset, together with additional surveillance footage, to
+train our own autonomous parking slot detection method
+\cite{context_based_parking_slot_detection_dataset}.
+
+For fairness, both models were evaluated on the same shared test split. The
+results are summarized in Table \ref{tab:model-evaluation-shared-test}.
+
+The evaluation metrics and matrix used in this subsection are interpreted as
+follows:
+\begin{itemize}
+    \item \textbf{Precision}: Proportion of predicted parking-slot detections that are correct.
+    \item \textbf{Recall}: Proportion of actual parking slots that are successfully detected.
+    \item \textbf{F1 score}: Harmonic mean of precision and recall, providing a balanced single-score summary.
+    \item \textbf{mAP50}: Mean average precision at IoU threshold 0.50.
+    \item \textbf{mAP50-95}: Mean average precision averaged across IoU thresholds from 0.50 to 0.95; this is a stricter overall detection-quality indicator.
+    \item \textbf{Normalized confusion matrix}: Shows the proportion of correct and incorrect predictions per class, where stronger diagonal values indicate better class separation and fewer misclassifications.
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \caption{Model evaluation on shared test split.}
+    \label{tab:model-evaluation-shared-test}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lcc}
+        \hline
+        \textbf{Metric} & \textbf{Config A (100\% fish-eye)} & \textbf{Config B (40\% fish-eye)} \\
+        \hline
+        Precision & 0.333 & 0.709 \\
+        Recall & 0.081 & 0.595 \\
+        F1 score & 0.130 & 0.647 \\
+        mAP50 & 0.224 & 0.584 \\
+        mAP50-95 & 0.095 & 0.224 \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{model-evaluations/with100/confusion_matrix_normalized.png}
+        \\ \small (a) Configuration A
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{model-evaluations/with40/confusion_matrix_normalized.png}
+        \\ \small (b) Configuration B
+    \end{minipage}
+    \caption{Normalized confusion matrices used to compare detection behavior across both training-data configurations.}
+    \label{fig:model-evaluation-confusion-matrices}
+\end{figure}
+
+As shown in Table \ref{tab:model-evaluation-shared-test} and Figure
+\ref{fig:model-evaluation-confusion-matrices}, Configuration B outperformed
+Configuration A across all key metrics and exhibited more reliable class
+separation, which supports its selection for the final system.
