@@ -2,16 +2,6 @@
 \label{chap:abstract}
 \addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
 
-Finding an optimal parking spot that is vacant within walking
-distance of the destination can be time-consuming in high-traffic areas
-with multiple parking areas such as university campuses or government
-complexes. These common inconveniences affect drivers entering the
-area, especially visitors or non-residents, and often lead to wasted time
-and aimless searching between parking areas. The motivation for this
-project is to develop a system that can indicate to the user the availability of multiple parking areas while reducing the potential cost of deploying the system, which the traditional parking management might exceed the budget. KU Parking addresses this by utilizing existing infrastructure—surveillance cameras already installed in parking areas for security purposes—integrated with an image processing model to detect vacant
-parking spaces. Users can check for availability in all parking areas near
-the destination before arriving. The project is designed to deploy on the
-cloud to enhance installability. The effectiveness of the project can be
-evaluated based on the model’s accuracy and user feedback. The goal is to
-provide accurate data that minimizes inconvenience and reduces the time
-required to find a parking spot.
+Finding a vacant parking spot is a persistent challenge in high-traffic areas like university campuses, often leading to wasted time and increased driver frustration. Traditional sensor-based parking management systems are often overlooked by institutions due to high installation and maintenance costs. KU Parking addresses this by proposing a cost-effective solution that utilizes existing surveillance camera infrastructure integrated with computer vision to detect vacant spaces.
+
+This report presents the Proof of Concept (POC) for the system, which employs the YOLO (You Only Look Once) object detection model and Intersection over Union (IoU) analysis to monitor parking occupancy. During this feasibility phase, the system was tested using recorded campus video and internet footage to demonstrate the model's ability to accurately identify available spots in a simulated real-time environment. The architecture is designed for cloud-based deployment to ensure scalability and ease of installation. Initial results indicate that the system can provide reliable occupancy data, offering a viable, low-cost alternative to traditional hardware-intensive parking solutions while significantly improving the campus navigation experience.

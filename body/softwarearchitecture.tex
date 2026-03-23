@@ -7,7 +7,7 @@ This chapter outlines the architectural framework of the KU Parking system. It e
 
 \subsection{Mobile Application Domain Diagram}
 \label{subsection:mobile-application-domain-diagram}
-The domain model diagram in Figure \ref{fig:mobile-application-domain-diagram} delineates the core conceptual entities within the KU Parking application and their relational logic, abstracting away platform-specific implementation details to focus on fundamental business rules. The system revolves around the central "ParkingSpot" entity, which tracks key information such as its name, capacity, real-time availability, and visual status indication. The primary actor, the "User", interacts with the domain through three main interactions: searching for parking areas, submitting an "IssueReport" to flag inaccuracies like closed lots or incorrect availability, and generating a "NavigationRoute" to accurately reach a chosen destination. Both the user's current position and the parking spots themselves are spatially defined through composition with a "Location" value object holding geographic coordinates. Ultimately, this structural representation maps the conceptual flow of user-driven actions as they query, navigate towards, and evaluate physical parking locations in the system.
+The domain model diagram in Figure \ref{fig:mobile-application-domain-diagram} delineates the core conceptual entities within the KU Parking application and their relational logic, abstracting away platform-specific implementation details to focus on fundamental business rules. The system revolves around the central "ParkingSpot" entity, which tracks key information such as its name, capacity, availability, and visual status indication. The primary actor, the "User", interacts with the domain through three main interactions: searching for parking areas, submitting an "IssueReport" to flag inaccuracies like closed lots or incorrect availability, and generating a "NavigationRoute" to accurately reach a chosen destination. Both the user's current position and the parking spots themselves are spatially defined through composition with a "Location" value object holding geographic coordinates. Ultimately, this structural representation maps the conceptual flow of user-driven actions as they query, navigate towards, and evaluate physical parking locations in the system.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrams/mobile-app/domain_diagram.png}
@@ -25,11 +25,11 @@ properties such as its total capacity and its geographic coordinates via the
 "GeoLocation" value object. The aggregate primarily manages two distinct
 entities: the "ParkingSpace", representing individual physical stalls whose
 spatial boundaries are defined by a "BoundingBox", and the "IssueReport", which
-logs anomaly feedback submitted by users. To integrate the AI capabilities
+logs anomaly feedback submitted by users. To integrate the model capabilities
 purely on a conceptual level, the model introduces the "DetectionResult" value
 object. This component encapsulates the inference engine's confidence scores and
 object classifications---mapped to its respective "BoundingBox"---which
-subsequently determines and updates the real-time occupancy status of each
+subsequently determines and updates the occupancy status of each
 "ParkingSpace" entity.
 \begin{figure}[H]
     \centering
