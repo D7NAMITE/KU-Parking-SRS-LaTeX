@@ -26,7 +26,10 @@
 \section{Business Context \& AI Integration}
 \label{section:business-context-ai-integration}
 
-KU Parking has integrated model for the detection of available parking spots. Figure \ref{fig:system-flow} provides a system overview: surveillance cameras monitor the parking area, feeding video to a local surveillance footage server. Periodically, individual frames from the video stream are extracted and processed by the model (as outlined in Figure \ref{fig:model-flow}). The model performs object detection to locate both cars and parking spaces within the image. Subsequently, it calculates the Intersection over Union (IoU), a metric quantifying the overlap between each detected vehicle's bounding box and the defined area of a parking spot. By comparing the IoU against a set threshold, the system determines if a vehicle significantly occupies a parking space, thus indicating its availability. This output is served to the client by the service server.
+KU Parking has integrated a model for detecting available parking spots. Figure \ref{fig:system-flow} provides a system overview reveals the architecture: a Camera Source monitors the parking area, feeding video to the Next.js server. Periodically, individual frames are extracted from the video stream and
+sent to a dedicated AI-Service powered by FastAPI. Within this service, the
+Detection Model performs object detection to locate both vehicles and parking
+spaces within the image. Periodically, individual frames from the video stream are extracted and processed by the model (as outlined in Figure \ref{fig:model-flow}). The model performs object detection to locate both cars and parking spaces within the image. Subsequently, it calculates the Intersection over Union (IoU), a metric quantifying the overlap between each detected vehicle's bounding box and the defined area of a parking spot. By comparing the IoU against a set threshold, the system determines if a vehicle significantly occupies a parking space, thus indicating its availability. This output is served to the client by the service server.
 
 By integrating a detection model, KU Parking can reduce the cost of installing a parking indication system by leveraging existing infrastructure. To inform users, parking availability requires continuous monitoring, as the availability and usage of parking spots can change throughout the day. The model helps automate this continuous monitoring process by analyzing feeds, providing up-to-date information on parking spot occupancy. The incorrect detections typically result in minor user frustration rather than significant damage.
 
@@ -154,7 +157,7 @@ The KU Parking Machine Learning Canvas (Table \ref{tab:ml-canvas}) outlines how 
 \textbf{Decisions} & Determine whether each parking space is occupied or vacant.\\ \hline
 \textbf{ML Task} & Car Detection (YOLO) on surveillance frames and postprocessing (IoU) to determine parking spot status.\\ \hline
 \textbf{Making Predictions} & Run on set interval and frequency\\ \hline
-\textbf{Offline Evaluation} & Use precision, recall, and F1-score on validation data. \\ \hline
+\textbf{Offline Evaluation} & Use precision, recall, F1-score, mAP50, and mAP50-95 on validation data. \\ \hline
 
 \multicolumn{2}{|c|}{\cellcolor{yellow!15}\textbf{LEARN}} \\ \hline
 \textbf{Data Sources} & Video frames from campus surveillance cameras and other surveillance footage (for training). \\ \hline
@@ -171,6 +174,28 @@ The KU Parking Machine Learning Canvas (Table \ref{tab:ml-canvas}) outlines how 
 \end{table}
 
 \clearpage
+\section{Model Configuration and Training Dataset}
+\label{section:model-training-dataset}
+The training dataset for the KU parking spot detection model includes both regular camera angles (Figure \ref{fig:regular-camera-data-example}) and labeled fish-eye perspectives (Figure \ref{fig:fish-eye-data-example}) from \textit{Context-Based Parking Slot Detection With a Realistic Dataset} \cite{context_based_parking_slot_detection_dataset}.
+
+While the fish-eye dataset offers diverse lighting conditions and angles that enhance robustness, initial testing revealed a performance trade-off. Specifically, models trained with 100\% fish-eye data were less effective at accurately detecting parking spots when tested using high-angle cameras, suggesting a potential risk of overfitting in the first configuration.
+
+For the second training configuration, we used a dataset composed of 40\% fish-eye images combined with added regular camera angle images. This combination allows the model to learn from a diverse set of images while maintaining a focus on the specific angles and conditions relevant to the project's scope. The performance comparison of these two configurations is detailed in Model Evaluation (Section \ref{subsection:model-evaluation}), demonstrating that the 40\% fish-eye configuration achieves a better performance.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrams/train-data-example/regular-data001.png}
+    \caption{Example of regular camera dataset image.}
+    \label{fig:regular-camera-data-example}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrams/train-data-example/fish-eye-data001.png}
+    \caption{Example of fish-eye angle dataset image.}
+    \label{fig:fish-eye-data-example}
+\end{figure}
+
 \section{User Experience Design with AI}
 \label{section:user-experience-with-ai}
 The AI component of KU Parking is designed to detect and identify the availability of parking spaces. Users receive information based on the results of the detection model, as illustrated in the User Interface Design section (Section \ref{section:user-interface-design}).
