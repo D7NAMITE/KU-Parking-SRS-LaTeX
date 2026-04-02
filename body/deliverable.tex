@@ -1,4 +1,4 @@
-\chapter{Deliverable}
+\chapter{Deliverables}
 \label{chap:deliverable}
 
 \section{Software Solution}
@@ -27,7 +27,8 @@ The Map Overview serves as the initial screen when a user enters the application
 
 \subsection{Mobile Application - Parking Spot Detail}
 \label{subsection:mobile-parking-spot-detail}
-When a user selects a specific parking area via the bottom sheet (as shown in Figure \ref{fig:parking-spot-detail-clicking-bottom-sheet-screenshot}, the red arrow indicates user's interaction) or the search bar (as shown in Figure \ref{fig:parking-spot-detail-clicking-search-screenshot}, the red arrow indicates user's interaction), the detailed view for that location is displayed. As shown in Figure \ref{fig:parking-spot-detail-screenshot}, these details include the parking area name, the current number of vacant spots, and a timestamp indicating when the information was last updated. The "Navigation" button redirects users to their device’s native navigation application (such as Apple Maps or Google Maps) to provide directions to the selected parking area. Additionally, the "Report Inaccurate Info" button allows users to flag discrepancies in the data, a process which is discussed in greater detail in the following section.
+When a user selects a specific parking area via the bottom sheet (as shown in Figure \ref{fig:parking-spot-detail-clicking-bottom-sheet-screenshot}, the red arrow indicates user's interaction) or the search bar (as shown in Figure \ref{fig:parking-spot-detail-clicking-search-screenshot}, the red arrow indicates user's interaction), the detailed view for that location is displayed. As shown in Figure \ref{fig:parking-spot-detail-screenshot}, these details include the parking area name, the current number of vacant spots, and a timestamp indicating when the information was last updated. The 
+\textit{Navigation} button redirects users to their device’s native navigation application (such as Apple Maps or Google Maps) to provide directions to the selected parking area. Additionally, the \textit{Report Inaccurate} Info button allows users to flag discrepancies in the data, a process which is discussed in greater detail in the following section.
 
 \begin{figure}[H]
     \centering
@@ -71,7 +72,7 @@ The search bar is located at the top of the screen, allowing users to tap and in
 \subsection{Mobile Application - Parking Area Navigation}
 \label{subsection:mobile-parking-area-navigation}
 Users can initiate navigation to a selected parking area by tapping the
-"Navigation" button, as shown in Figure \ref{fig:navigation-clicking-screenshot}.
+\textit{Navigation} button, as shown in Figure \ref{fig:navigation-clicking-screenshot}.
 This action launches the device's native navigation application, automatically
 setting a route from the user's current location to the selected parking area.
 The specific external navigator used depends on the device's operating system:
@@ -96,7 +97,7 @@ navigation interface as it appears on an iOS device.
 \subsection{Mobile Application - Inaccuracy Report}
 \label{subsection:mobile-inaccuracy-report}
 In the event of data discrepancies, users can report incorrect information to
-the parking facility by tapping the “Report Inaccurate Info” button, as shown in
+the parking facility by tapping the \textit{Report Inaccurate Information} button, as shown in
 Figure \ref{fig:report-clicking-screenshot}. This action opens a reporting form
 that allows the user to select a specific reason for the report and provide an
 optional description, as illustrated in Figure \ref{fig:report-form-screenshot}.
@@ -140,7 +141,7 @@ Upon accessing the web application, the parking facilitator is presented with th
 \label{fig:web-initial-view-screenshot}
 \end{figure}
 
-The parking facilitator can select the desired camera feed source from the available options. As shown in Figure \ref{fig:web-selecting-source-screenshot}, the user selects 'Screen Capture' as the primary input. Once a source is selected, a preview is generated within the placeholder area, as illustrated in Figure \ref{fig:web-source-selected-screenshot}. At this stage, the user can crop the specific area for detection by clicking the 'Select Crop Region' button at the bottom of the interface.
+The parking facilitator can select the desired camera feed source from the available options. As shown in Figure \ref{fig:web-selecting-source-screenshot}, the user selects \textit{Screen Capture} as the primary input. Once a source is selected, a preview is generated within the placeholder area, as illustrated in Figure \ref{fig:web-source-selected-screenshot}. At this stage, the user can crop the specific area for detection by clicking the \textit{Select Crop Region} button at the bottom of the interface.
 
 \begin{figure}[H]
     \centering
@@ -157,7 +158,7 @@ The parking facilitator can select the desired camera feed source from the avail
 \end{figure}
 
 Once the preview and cropping regions are correctly configured, the user can
-click 'Capture \& Initialize' to deploy the detection model. As shown in Figure
+click the \textit{Capture \& Initialize} button to deploy the detection model. As shown in Figure
 \ref{fig:web-detection-model-result-screenshot}, the web application then
 displays the initial output of the detection model, identifying the parking spot
 that the model can detect.
@@ -169,9 +170,7 @@ that the model can detect.
 \label{fig:web-detection-model-result-screenshot}
 \end{figure}
 
-To manually define a new parking spot, the user can click the '+ Add Spot'
-button. This action triggers an on-screen prompt, 'Click and drag to draw a new
-parking spot,' which appears at the top of the preview window as shown in Figure
+To manually define a new parking spot, the user can click the \textit{+ Add Spot} button. This action triggers an on-screen prompt, \textit{Click and drag to draw a new parking spot}, which appears at the top of the preview window as shown in Figure
 \ref{fig:web-add-parking-spot-before-screenshot}. The user can then click and
 drag their cursor across the preview to create a new detection boundary, as
 illustrated in Figure \ref{fig:web-add-parking-spot-after-screenshot}.
@@ -210,7 +209,7 @@ The parking spots initially identified by the detection model can be manually re
 Detected boundaries can also be deleted in cases where detection is inaccurate
 or a placeholder does not correspond to a valid parking spot. As shown in Figure
 \ref{fig:web-deleting-spot-before-screenshot}, the user can select the specific
-boundary that is not a parking spot and click 'Delete Selected'. Following this
+boundary that is not a parking spot and click the \textit{Delete Selected} button. Following this
 action, the chosen boundary is removed from the system, as illustrated in Figure
 \ref{fig:web-deleting-spot-after-screenshot}.
 
@@ -240,7 +239,7 @@ geographic coordinates. As shown in Figure \ref{fig:web-add-parking-lot-detail-s
 \label{fig:web-add-parking-lot-detail-screenshot}
 \end{figure}
 
-Upon clicking 'Save \& Start', the system officially registers the parking lot and initiates the vehicle detection model. The facilitator can then monitor the live parking availability through the dashboard interface, as shown in Figure \ref{fig:web-saved-parking-lot-screenshot}. Should the configuration require further refinement, the user can select 'Edit Spots' to adjust existing parking area placeholders or 'Reset' to completely reconfigure the detection setup from the initial stage.
+Upon clicking the \textit{Save \& Start} button, the system officially registers the parking lot and initiates the vehicle detection model. The facilitator can then monitor the live parking availability through the dashboard interface, as shown in Figure \ref{fig:web-saved-parking-lot-screenshot}. Should the configuration require further refinement, the user can select the \textit{Edit Spots} button to adjust existing parking area placeholders or the \textit{Reset} button to completely reconfigure the detection setup from the initial stage.
 
 \begin{figure}[H]
     \centering
@@ -269,20 +268,39 @@ The AI service is tested using the pytest framework to validate critical functio
     \item FastAPI endpoints
 \end{itemize}
 
-\noindent\textbf{Result:} All 7 tests passed successfully.
+\noindent\textbf{Result:} All 7 tests passed successfully. The executed tests validated the following behaviors:
+\begin{itemize}
+    \item test\_get\_settings\_reads\_environment: checks environment configuration loading.
+    \item test\_get\_redis\_returns\_singleton: checks Redis singleton behavior.
+    \item test\_root\_returns\_message: checks the \textit{/} health response.
+    \item test\_init\_returns\_spots: checks \textit{/init} spot output.
+    \item test\_frame\_returns\_occupancy\_and\_caches: checks frame occupancy output and caching.
+    \item test\_init\_returns\_500\_on\_prediction\_error: checks error handling on prediction failure.
+    \item test\_get\_spot\_coordinates\_uses\_cache: checks coordinate cache usage.
+\end{itemize}
 
-\subsubsection{Parking Spot Web-applicationInterface Testing}
+\subsubsection{Parking Spot Web-application Interface Testing}
 
 The parking spot interface is tested using the Vitest framework with both unit and integration test suites. The test coverage includes:
 
 \begin{itemize}
     \item Backend API wrapper success and failure behavior validation
     \item Environment variable validation mechanisms
-    \item Server action seam behavior with mocked database and S3 storage
+    \item Server action seam behavior with database and S3 storage
     \item Rewrite contract expectation verification
 \end{itemize}
 
-\noindent\textbf{Result:} All 8 tests passed successfully.
+\noindent\textbf{Result:} All 8 tests passed successfully. The executed unit and integration tests validated the following behaviors:
+\begin{itemize}
+    \item accepts valid required environment variables: checks valid environment parsing.
+    \item throws when required environment is missing: checks fail-fast behavior for missing environment values.
+    \item sends init frame and returns JSON payload: checks init-frame request/response handling.
+    \item throws on failed init response: checks error handling for failed \textit{/init} calls.
+    \item throws on failed frame response: checks error handling for failed frame calls.
+    \item rewrites \textit{/api/backend/*} to \textit{BACKEND\_URL}: checks rewrite/proxy mapping.
+    \item parses spot payload and persists parking spot  coordinates: checks parse-and-save flow for spot data.
+    \item downloads image payload when URL is valid: checks image download action from valid URLs.
+\end{itemize}
 
 \subsubsection{Mobile Backend Testing}
 
@@ -292,10 +310,21 @@ The mobile backend service is tested using Go's standard testing package and htt
     \item HTTP JSON helper functions and environment variable defaults
     \item Issue report validation before database access
     \item API error response handling (HTTP 400 errors) without external dependencies
-    \item API health check endpoint (GET /) functionality
+    \item API health check endpoint (GET \textit{/}) functionality
 \end{itemize}
 
-\noindent\textbf{Result:} All 9 tests passed successfully.
+\noindent\textbf{Result:} All 9 tests passed successfully. The executed tests validated the following behaviors:
+\begin{itemize}
+    \item \textit{TestEnvOrDefault}: checks fallback and configured environment value handling.
+    \item \textit{TestWriteJSON}: checks status code, JSON content type, and response encoding.
+    \item \textit{TestCreateIssueReport\_InvalidPayload\_NoDB} (zero parking spot id): checks zero-id validation.
+    \item \textit{TestCreateIssueReport\_InvalidPayload\_NoDB} (negative parking spot id): checks negative-id validation.
+    \item \textit{TestCreateIssueReport\_InvalidPayload\_NoDB} (both reason and notes empty after trim): checks blank reason/notes validation.
+    \item \textit{TestAPI\_HandleHealth}: checks GET \textit{/} health response.
+    \item \textit{TestAPI\_HandleIssueReports\_InvalidJSON}: checks malformed JSON handling at \textit{/issue-reports}.
+    \item \textit{TestAPI\_HandleIssueReports\_UnknownField}: checks unknown-field rejection at \textit{/issue-reports}.
+    \item \textit{TestAPI\_HandleIssueReports\_InvalidPayload}: checks invalid issue-report payload handling at \textit{/issue-reports}.
+\end{itemize}
 
 \subsubsection{Cross-Service Integration Testing}
 
@@ -304,12 +333,25 @@ A comprehensive integration harness (full\_stack\_test.sh) validates the interac
 \begin{itemize}
     \item Docker Compose startup readiness verification
     \item Database schema initialization and fixture seeding
-    \item AI service frame processing (/frame) response validation and Redis occupancy key assertion
+    \item AI service frame processing (\textit{/frame}) response validation and Redis occupancy key assertion
     \item Interface rewrite assertion through backend API endpoint
     \item Optional mobile backend contract verification
 \end{itemize}
 
-\noindent\textbf{Result:} Full integration test passed with all services communicating correctly and data flow validated end-to-end.
+\noindent\textbf{Result:} Integration testing passed successfully across two layers. The executed checks validated the following behaviors:
+\begin{itemize}
+    \item Frontend integration tests with Vitest: checks module integration with mocked database/S3 seams.
+    \item actions.integration.test.ts - parses spot payload and persists parking spot and coordinates: checks parsing, upload, and data persistence flow.
+    \item actions.integration.test.ts - downloads image payload when URL is valid: checks image retrieval and encoding flow.
+    \item rewrites.integration.test.ts - rewrites \textit{/api/backend/*} to \textit{BACKEND\_URL}: checks rewrite/proxy contract.
+    \item Full-stack integration harness via integration/full\_stack\_test.sh: checks end-to-end behavior on the full Docker stack.
+    \item Service readiness checks: checks required service availability before validation.
+    \item Database fixture setup: checks schema loading and seed insertion.
+    \item AI service frame contract: checks required response fields from POST \textit{/frame}.
+    \item Redis cache assertion: checks cache write after frame processing.
+    \item Interface rewrite contract: checks backend reachability through \textit{/api/backend}.
+    \item Optional mobile backend contract: checks required fields in \textit{/parking-spots} responses.
+\end{itemize}
 
 \subsubsection{Continuous Integration and Deployment}
 
@@ -333,12 +375,11 @@ trained with Configuration B was selected for deployment because it provides
 better generalization and reduces overfitting to fish-eye lens characteristics.
 
 The paper \textit{Context-Based Parking Slot Detection With a Realistic
-Dataset} presents an autonomous parking slot detection method evaluated on a
+Dataset} \cite{context_based_parking_slot_detection_dataset} presents an autonomous parking slot detection method evaluated on a
 realistic, context-rich dataset designed to reflect practical parking-scene
 variability. In this project, we used the dataset from that work as one part
 of our training dataset, together with additional surveillance footage, to
-train our own autonomous parking slot detection method
-\cite{context_based_parking_slot_detection_dataset}.
+train our own autonomous parking slot detection method.
 
 For fairness, both models were evaluated on the same shared test split. The
 results are summarized in Table \ref{tab:model-evaluation-shared-test}.

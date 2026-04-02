@@ -46,16 +46,16 @@ subsequently determines and updates the occupancy status of each
 \label{subsection:mobile-application-class-diagram}
 The class diagram in Figure \ref{fig:mobile-application-class-diagram} illustrates the component-based architecture of the KU Parking
 Mobile App, highlighting the relationships between the primary user interface
-modules and the underlying data models. At the core of the system is the 'Index'
+modules and the underlying data models. At the core of the system is the \textit{Index}
 component, which serves as the main controller managing the application's state,
 including the selected parking spot, current search query, and issue reporting
-workflow. The 'Index' component utilizes composition to render modular,
-single-purpose child components such as 'ParkingMap', 'SearchBar', 'SpotList',
-'SpotDetail', and 'ReportIssue'. Each child component strictly adheres to
-defined interface contracts (e.g., 'ParkingMapProps', 'SpotDetailProps') that
+workflow. The \textit{Index} component utilizes composition to render modular,
+single-purpose child components such as \textit{ParkingMap}, \textit{SearchBar}, \textit{SpotList},
+\textit{SpotDetail}, and \textit{ReportIssue}. Each child component strictly adheres to
+defined interface contracts (e.g., \textit{ParkingMapProps}, \textit{SpotDetailProps}) that
 specify their required data properties and callback event handlers. Furthermore,
 the presentation layer interacts seamlessly with the domain logic by depending
-on the shared 'ParkingSpot' entity type and the centralized 'parkingData'
+on the shared \textit{ParkingSpot} entity type and the centralized \textit{parkingData}
 configuration module, ensuring a clear separation of concerns and robust data
 consistency across the application.
 \begin{figure}[H]
@@ -67,7 +67,7 @@ consistency across the application.
 
 \subsection{Web Application Class Diagram}
 \label{subsection:web-application-class-diagram}
-This class diagram in Figure \ref{fig:web-application-class-diagram} illustrates the holistic architecture of the parking application, encapsulating both the core domain entities and the integrated AI service components. At the center of the domain is the "ParkingSpot" entity, which acts as an aggregate root containing multiple "Coordinate" objects that define distinct physical parking spaces, alongside associated "IssueReport" entities that track user-submitted feedback. The system distinguishes business logic through dedicated service controllers—namely "ParkingSpotService" and "IssueReportService"—which handle data persistence and API operations. Concurrently, the AI functionality is abstracted through the "AIServiceAPI", which processes video frame inputs and relies on structural interfaces such as "Detection", "BoundingBox", and "SpotOccupancy" to continuously evaluate and update the real-time availability of each parking space.
+This class diagram in Figure \ref{fig:web-application-class-diagram} illustrates the holistic architecture of the parking application, encapsulating both the core domain entities and the integrated AI service components. At the center of the domain is the \textit{ParkingSpot} entity, which acts as an aggregate root containing multiple \textit{Coordinate} objects that define distinct physical parking spaces, alongside associated \textit{IssueReport} entities that track user-submitted feedback. The system distinguishes business logic through dedicated service controllers—namely \textit{ParkingSpotService} and \textit{IssueReportService}—which handle data persistence and API operations. Concurrently, the AI functionality is abstracted through the \textit{AIServiceAPI}, which processes video frame inputs and relies on structural interfaces such as \textit{Detection}, \textit{BoundingBox}, and \textit{SpotOccupancy} to continuously evaluate and update the real-time availability of each parking space.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{diagrams/web-app/web_app_class_diagram.png}
