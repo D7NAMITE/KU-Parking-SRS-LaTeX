@@ -1,0 +1,117 @@
+\chapter{Project Defense and Project Expo}
+\label{chap:project-defense-and-project-expo}
+
+This chapter details the formal evaluation and public dissemination of the project, focusing on the iterative refinement driven by two rounds of project defense and participation in the SKE Project Expo. It documents the critical feedback provided by evaluators, the specific revisions implemented to address these insights, and the subsequent impact of those changes on the project's quality. Beyond technical assessments, the chapter explores the team's engagement with a wider audience during the Expo, highlighting the strategic design of presentation materials and a reflection on how these experiences contributed to the project's professional presentation.
+
+\section{First Project Defense}
+\label{section:first-project-defense}
+
+\subsection{Comments and Feedback from the Evaluators}
+\label{section:first-project-defense-comments-and-feedback-from-the-evaluators}
+
+During the initial defense, the evaluators focused on the system's scalability and long-term accuracy. Three primary recommendations were provided:
+
+\begin{enumerate}
+    \item \textbf{Re-training the Parking Spot Detection Model:} Evaluators recommended leveraging human-drawn parking spot boundaries from the system setup process to re-train the detection model. This would enhance the model's accuracy and reliability as the training data becomes more diverse.
+    \item \textbf{Caching Vacancy Status:} It was suggested that the system introduce a caching mechanism for the vacancy status of parking spots. This would reduce the computational load on the detection models and improve response times for end-users.
+    \item \textbf{Embracing a More Modular Design:} Evaluators recommended transitioning to a more modular architecture. They raised concerns that a monolithic design might face significant performance issues if the number of mobile application users increases.
+\end{enumerate}
+
+\subsection{Revisions Required, Actions Taken, and Outcomes}
+\label{section:first-project-defense-revisions-required-actions-taken-and-outcomes}
+
+In response to the feedback from the first defense, the following technical revisions were implemented:
+
+\begin{enumerate}
+    \item \textbf{Setting Up Retraining Data Storage:} To facilitate future model improvements, the team implemented a data storage mechanism using \textit{AWS S3} to archive human-drawn parking spot boundaries. The system is now designed to collect this data over time, enabling continuous improvements to detection accuracy in future versions.
+    \item \textbf{Setting Up Caching Storage:} The team developed a caching storage mechanism to store frequently requested data, specifically the real-time vacancy status of parking spots. This allows for near-instantaneous responses to availability queries, significantly enhancing the user experience.
+    \item \textbf{Revising the System Architecture:} The architecture was refactored to be more modular, improving both scalability and maintainability. By decoupling the mobile application, the web-based portal, and the AI component into distinct modules, each can now be scaled and maintained independently.
+\end{enumerate}
+
+\section{Second Project Defense}
+\label{section:second-project-defense}
+
+\subsection{Comments and Feedback from the Evaluators}
+\label{section:second-project-defense-comments-and-feedback-from-the-evaluators}
+
+The second defense centered on model validation and real-world user interaction:
+
+\begin{enumerate}
+    \item \textbf{Small Testing Dataset:} Evaluators noted that the testing dataset used for model evaluation was relatively small, which could potentially skew results. They recommended expanding the dataset to include a wider variety of samples.
+    \item \textbf{Lack of User Interface Testing on Real Users:} It was pointed out that the mobile application's user interface had not yet been tested with real users. Evaluators suggested conducting usability testing sessions to gather feedback and identify areas for improvement.
+\end{enumerate}
+
+\subsection{Revisions Required, Actions Taken, and Outcomes}
+\label{section:second-project-defense-revisions-required-actions-taken-and-outcomes}
+
+While the team acknowledged the evaluators' recommendations, several logistical and technical constraints limited further revisions:
+
+\begin{enumerate}
+    \item \textbf{Dataset Limitations:} The model evaluation dataset primarily utilized recorded footage from the Department of Computer Engineering (CPE) parking facility. Due to the rigid project schedule following the defense, the team was unable to capture additional testing data or expand the sample size as suggested within the timeframe toward the project expo.
+    \item \textbf{Deployment Constraints:} Due to limited project resources and strict timeframe requirements, the mobile application could not be deployed on official public platforms, such as the \textit{Apple App Store} or \textit{Google Play Store}. However, the team did conduct internal testing sessions with a small group of users to gather feedback on the user interface and overall user experience.
+\end{enumerate}
+
+\subsection{Suggestions on How Project Defense Can Better Support Software Development}
+\label{section:second-project-defense-suggestions-on-how-project-defense-can-better-support-software-development}
+
+\begin{enumerate}
+    \item \textbf{Allocating Time for Feedback Implementation After the Second Defense:} As projects can still be refined based on second defense feedback, providing additional time for implementation before the project expo would be beneficial. This would allow teams to further address remaining issues and enhance the professional quality of their deliverables.
+\end{enumerate}
+
+\section{Project Expo Participation}
+\label{section:project-expo-participation}
+
+\subsection{Poster Presentation and Poster Components}
+\label{section:project-expo-poster-presentation-and-poster-components}
+The project poster as shown in Figure \ref{fig:ku-parking-poster} was designed to communicate both the technical depth and the practical utility of the KU-Parking system to the audience. It features a modular layout highlighting the AI-driven detection pipeline, the full-stack architecture, and the specific functionalities of the mobile and web applications. By incorporating detailed evaluation metrics and configuration comparisons, the poster served as a primary visual aid to substantiate the project's performance claims during technical discussions with Expo attendees.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{project-expo/ku-parking-poster.png}
+    \caption{KU Parking Poster.}
+\label{fig:ku-parking-poster}
+\end{figure}
+
+\subsection{Event Photos and Awards Received}
+\label{section:project-expo-event-photos-and-awards-received}
+
+The team (which both members are shown in Figure \ref{fig:project-team-with-poster}) have participated in the SKE Project Expo, showcasing the KU Parking system to an audience of both fellow students and faculty members as shown in Figure \ref{fig:presenting-poster-to-attendee-1} and Figure \ref{fig:presenting-poster-to-attendee-2}. This participation provided a platform for live demonstrations and academic networking, resulting in a series of engaging dialogues with professors and peers alike. These interactions, which included both technical inquiries and constructive recommendations, served as the primary basis for the feedback and project reflections detailed in the subsequent section.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{project-expo/poster-with-members.jpg}
+    \caption{Project Team with the KU Parking Poster at the SKE Project Expo.}
+\label{fig:project-team-with-poster}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{project-expo/project-expo001.jpg}
+    \caption{Picture of the project team presenting the KU Parking to an Expo attendee.}
+\label{fig:presenting-poster-to-attendee-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{project-expo/project-expo002.jpg}
+    \caption{Picture of the project team presenting the KU Parking to another Expo attendee.}
+\label{fig:presenting-poster-to-attendee-2}
+\end{figure}
+
+\subsection{Questions Raised During the Expo and the Team's Responses}
+\label{section:project-expo-questions-raised-during-the-expo-and-the-teams-responses}
+During the exhibition, the team addressed several inquiries and technical recommendations:
+
+\begin{enumerate}
+    \item \textbf{System Architecture and Scalability:} Attendees inquired about the modularity of the backend. The team explained how the decoupled design allows the AI service and mobile backend to scale independently, facilitating potential integration with broader smart city initiatives.
+    \item \textbf{AI-Component Workflow:} Questions were raised regarding the interplay between detection models and user interfaces. The team provided detailed walkthroughs of the data flow, specifically how both models output integrates into vacancy status updates on the web and mobile portals.
+    \item \textbf{Training Dataset Diversity:} Inquiries regarding the representativeness of the dataset were addressed by explaining the collection process and the additional data sources.
+    \item \textbf{Automated Parking Boundary Mapping Method:} A recommendation was made to improve the setup process. It was suggested that rather than manual drawing, the system could use the vehicle detection model to observe parking patterns over time. By mapping where vehicles consistently park, the system could automatically register the spot as a parking spot, potentially eliminating the need for a separate parking spot detection model.
+\end{enumerate}
+
+\subsection{Recommendations for Improving the Expo}
+\label{section:project-expo-recommendations-for-improving-the-expo}
+To enhance future iterations of the SKE Project Expo, the team proposes the following enhancements:
+\begin{enumerate}
+    \item \textbf{Enhanced Exhibition Equipment:} Providing dedicated monitors for live software demonstrations to every exhibit would allow attendees to engage more deeply with project functionalities beyond static posters.
+    \item \textbf{Extended Event Duration:} Expanding the Expo over multiple days would facilitate more in-depth exploration and networking opportunities, allowing a wider range of stakeholders to visit and engage with the student projects.
+\end{enumerate}
