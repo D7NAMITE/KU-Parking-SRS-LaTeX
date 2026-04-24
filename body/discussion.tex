@@ -1,12 +1,23 @@
 \chapter{Conclusion and Discussion}
 \label{chap:conclusion-discussion}
-
-<TIP: Discuss your work here. For example, you can discuss software patterns
-that you use in this project, software libraries, difficulties encountered during
-development, or any other topic. />
+This chapter summarizes the outcomes of the KU Parking project, providing a comprehensive summary of the system's development and its effectiveness in addressing campus parking challenges. It concludes with a critical discussion of the technical insights gained during implementation, the limitations encountered throughout the research and development phases, and potential avenues for future enhancement based on feedback from evaluators and stakeholders.
 
 \section{Conclusion}
 \label{section:conclusion}
+The KU Parking project was initiated to address the persistent frustration and time-inefficiency associated with finding vacant parking spots on the Kasetsart University Bangkhen Campus. By recognizing that traditional sensor-based systems are often cost-prohibitive for large-scale institutional deployment, this project successfully demonstrated a viable, low-cost alternative utilizing existing surveillance camera infrastructure integrated with computer vision.
+
+The system consists of an AI-driven backend, a web-based administrative portal, and a cross-platform mobile application. Technically, the project leveraged the YOLO (You Only Look Once) object detection model combined with Intersection over Union (IoU) analysis to determine parking occupancy. Through an iterative development process, the system was refactored from a monolithic structure to a modular cloud-based architecture, incorporating Redis caching to ensure low-latency updates for end-users.
+
+Evaluation results confirmed that the system is capable of accurately identifying vacant spaces. Specifically, the model configuration trained on a balanced dataset (40\% fish-eye and 60\% regular camera angles) achieved superior generalization, reaching an F1 score of 0.647 and a mAP50 of 0.584. Furthermore, the integration of manual calibration features in the web portal effectively bridged the gap between automated detection and real-world layout variations. In conclusion, KU Parking provides a scalable and cost-effective Proof of Concept that significantly improves campus navigation and provides a foundation for future "Smart Campus" initiatives.
 
 \section{Discussion}
 \label{section:discussion}
+Throughout the development of KU Parking, several critical insights were gained regarding the application of AI in dynamic urban environments. A primary point of discussion is the impact of training data diversity. Initial experiments with 100\% fish-eye data led to overfitting, where the model struggled with standard high-angle surveillance feeds. Our findings indicate that a hybrid dataset is essential for a system intended to work across various campus locations where camera hardware and mounting angles may differ.
+
+The transition to a modular architecture, prompted by the first project defense, was a turning point for the project's technical maturity. Separating the AI service from the mobile backend allowed for more efficient resource allocation and error isolation. Implementing a caching layer was particularly impactful; by storing the vacancy status in Redis, we reduced the need for repeated database queries, directly addressing the system goals of providing close to real-time information.
+
+Expanding the dataset to include varying weather conditions (e.g., heavy rain) and nighttime lighting remains a necessary step for commercial-grade reliability. Furthermore, the lack of public deployment on the App Store or Google Play Store meant that user feedback was gathered from a controlled group rather than a broad, diverse user base.
+
+One of the most promising insights emerged during the Project Expo: the potential for "Automated Parking Boundary Mapping" and "In-Parking Area Navigation." Currently, the system requires an administrator to manually draw or verify spots. A future iteration could implement a temporal analysis algorithm that "learns" parking spot locations by observing where vehicles consistently remain stationary over long periods, potentially eliminating the need for manual setup.
+
+Furthermore, because our approach identifies vacancy for individual parking spots rather than just providing a total count for a lot, there is significant potential for "In-Parking Area Navigation." Future work could involve developing a more granular navigation interface that guides users not just to the entrance of a parking area, but directly to a specific vacant stall. This would further minimize the time spent searching within large or complex lots. Future work should also explore integrating with a wider network of campus cameras to provide a truly comprehensive view of Kasetsart University's parking landscape.
